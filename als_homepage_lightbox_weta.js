@@ -3,7 +3,6 @@
 // 
 // Developed by by Ben Long <ben@annelewisllc.com>.
 
-
 // Add base ALS styling CSS file.
 /*
 var als_style_tag = document.createElement('link');
@@ -14,16 +13,19 @@ var als_style_tag = document.createElement('link');
 	als_style_tag.href = 'http://localhost/www/GitHub/als_convio/homepage_lightbox/als_homepage_lightbox_weta.css';
 document.getElementsByTagName('head')[0].appendChild(als_style_tag);
 */
+
+$.getScript('//s3.amazonaws.com/annelewisllc/assets/fancybox/jquery.fancybox.pack.js', function() {
+	deploy_fancybox();
+});
+
 // Add fancybox styling
-/*
+
 var fancybox_style_tag = document.createElement('link');
 	fancybox_style_tag.rel  = 'stylesheet';
 	fancybox_style_tag.type = 'text/css';
 	fancybox_style_tag.media = 'all';
-	fancybox_style_tag.href = '//s3.amazonaws.com/convioluminate/fancybox/jquery.fancybox.css';
+	fancybox_style_tag.href = '//s3.amazonaws.com/annelewisllc/assets/fancybox/jquery.fancybox.css';
 document.getElementsByTagName('head')[0].appendChild(fancybox_style_tag);
-*/
-
 
 var lightbox_html = '<!-- the lightbox html -->'
 + '<div id="lightbox" style="display:none;">'
@@ -89,12 +91,16 @@ function eraseCookie(name) {
 
 
 
+function deploy_fancybox() {
 
 /* Lightbox guts here */
 
 jQuery(document).ready(function( $ ) {		
         $('body').prepend('<a class="lightbox" href="#lightbox"></a>');
-        $('body').append(lightbox_html);
+//         $('body').append(lightbox_html);
+        $('body').append('<div id="lightbox" style="display:none;"><iframe src="'
+        	+ $('#als_lightbox').data('lightbox-src')
+        	+ '" style="height: 100%; width: 100%;"></iframe></div>');
         
         
 	$('#donation-form input#vOther').prop('checked', false);
@@ -152,7 +158,7 @@ jQuery(document).ready(function( $ ) {
 	
 	if(!readCookie('2014-eoy-lightbox')) {
 		$(".lightbox").trigger('click');
-		createCookie('2014-eoy-lightbox',1,1);
+// 		createCookie('2014-eoy-lightbox',1,1);
 	}
 	 
 	 $('#lightbox_close').on('click', function() {
@@ -191,3 +197,5 @@ jQuery(document).ready(function( $ ) {
          });
              
      });
+
+}
