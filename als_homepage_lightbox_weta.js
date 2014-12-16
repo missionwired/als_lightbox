@@ -122,8 +122,8 @@ jQuery(document).ready(function( $ ) {
          $(".lightbox").fancybox({
                 openEffect  : 'fade',
                 closeEffect : 'fade',
-                openSpeed   : 1000,
-                closeSpeed  : 1000,
+                openSpeed   : 500,
+                closeSpeed  : 250,
 		  padding	: 0,
                   maxWidth	: 850,
                   maxHeight	: 650,
