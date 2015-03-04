@@ -154,6 +154,58 @@ function execute_fancybox($) {
 		als_style_tag.href = '//annelewisllc.s3.amazonaws.com/assets/splash/css/als_fancybox_launch.css';
 	document.getElementsByTagName('head')[0].appendChild(als_style_tag);
 
+	// Add postMessage listener to allow child iframe to close itself. 		
+
+	// Create IE + others compatible event handler
+	var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+	var eventer = window[eventMethod];
+	var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+
+	// Listen to message from child window
+	eventer(messageEvent,function(e) {
+		if (e.data == 'fancybox.close') {
+			jQuery.fancybox.close();
+		}
+	},false);
+	
+	// Add postMessage listeners to allow child iframe to resize itself. 		
+	var postMessage_height = 0;
+	eventer(messageEvent,function(e) {
+		if (/fancybox\.height\('{0,1}\d+'{0,1}\)/.test(e.data)) {
+			$(document).ready(function() {
+				
+				postMessage_height = parseInt(e.data.match(/fancybox\.height\('{0,1}(\d+)'{0,1}\)/)[1]);
+				fancybox_change_height(postMessage_height);
+				
+			});
+		}
+	},false);
+	
+	function fancybox_change_height(h) {
+		$(".als-fancybox-inner").css({
+			height: h
+		});
+	}
+	
+	var postMessage_width = 0;
+	eventer(messageEvent,function(e) {
+		if (/fancybox\.width\('{0,1}\d+'{0,1}\)/.test(e.data)) {
+			$(document).ready(function() {
+				
+				postMessage_width = parseInt(e.data.match(/fancybox\.width\('{0,1}(\d+)'{0,1}\)/)[1]);
+				fancybox_change_width(postMessage_width);
+				
+			});
+		}
+	},false);
+	
+	function fancybox_change_width(w) {
+		$(".als-fancybox-inner, .als-fancybox-wrap").css({
+			width: w
+		});
+	}
+
+
 	$(document).ready(function( $ ) {
 	
 		$('body').prepend('<div id="als_lightbox" style="display:none;"></div>');
@@ -210,7 +262,12 @@ function execute_fancybox($) {
 			tpl: {
 				wrap     : '<div class="als-fancybox-wrap fancybox-wrap" tabIndex="-1"><div class="als-fancybox-skin fancybox-skin"><div class="fancybox-outer"><div class="fancybox-inner als-fancybox-inner"></div></div></div></div>',
 				closeBtn : '<a title="Close" class="fancybox-item als-fancybox-close fancybox-close" href="javascript:;"></a>'
-			}	
+			}
+ 			, onUpdate: function() {
+ 				// Necessary to allow child frame to resize itself. 				
+ 				if(postMessage_height != 0) { fancybox_change_height(postMessage_height); }
+ 				if(postMessage_width != 0) { fancybox_change_width(postMessage_width); }
+ 			}				
 		});
 	
 	
