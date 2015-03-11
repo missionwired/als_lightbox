@@ -168,6 +168,9 @@ function execute_fancybox($) {
 		}
 	},false);
 	
+/* -------
+Disable ability for child iframe to resize itself.
+
 	// Add postMessage listeners to allow child iframe to resize itself. 		
 	var postMessage_height = 0;
 	eventer(messageEvent,function(e) {
@@ -204,7 +207,8 @@ function execute_fancybox($) {
 			width: w
 		});
 	}
-
+	
+------- */
 
 	$(document).ready(function( $ ) {
 	
@@ -249,6 +253,7 @@ function execute_fancybox($) {
 			autoScale: false,
 			wrapCSS: 'als_fancybox',
 			scrollOutside: true, //If true, the script will try to avoid horizontal scrolling for iframes and html content 
+			scrolling: 'no',
 			maxHeight: boxMaxHeight,
 			maxWidth: boxMaxWidth,
 			href: boxUrl,
@@ -263,11 +268,11 @@ function execute_fancybox($) {
 				wrap     : '<div class="als-fancybox-wrap fancybox-wrap" tabIndex="-1"><div class="als-fancybox-skin fancybox-skin"><div class="fancybox-outer"><div class="fancybox-inner als-fancybox-inner"></div></div></div></div>',
 				closeBtn : '<a title="Close" class="fancybox-item als-fancybox-close fancybox-close" href="javascript:;"></a>'
 			}
- 			, onUpdate: function() {
- 				// Necessary to allow child frame to resize itself. 				
- 				if(postMessage_height != 0) { fancybox_change_height(postMessage_height); }
- 				if(postMessage_width != 0) { fancybox_change_width(postMessage_width); }
- 			}				
+// 			, onUpdate: function() {
+//					// Necessary to allow child frame to resize itself. 				
+//  				if(postMessage_height != 0) { fancybox_change_height(postMessage_height); }
+//  				if(postMessage_width != 0) { fancybox_change_width(postMessage_width); }
+// 			}				
 		});
 	
 	
