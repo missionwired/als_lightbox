@@ -3,11 +3,15 @@
 // uses fancybox in iframe
 // Developed by by Ben Long <ben@annelewisllc.com>.
 
+
+var enforceMinJQueryVersion = '1.6'; // Minimum required jQuery version.
+
+
 // Helper functions. 
 
 function getScript(url, success) {
 
-	var script     = document.createElement('script');
+	var script = document.createElement('script');
 		script.src = url;
 	
 	var head = document.getElementsByTagName('head')[0],
@@ -64,7 +68,7 @@ function eraseCookieAls(name) {
 var thisPageUsingOtherJSLibrary = false;
 
 // Only do anything if jQuery isn't defined
-if (typeof jQuery == 'undefined') {
+if ( ( typeof jQuery == 'undefined' ) || ( jQuery.fn.jquery < enforceMinJQueryVersion ) ) {
 
 	if (typeof $ == 'function') {
 		// warning, global var
