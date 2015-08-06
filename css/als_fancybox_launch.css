@@ -5,6 +5,7 @@
 
 .als_fancybox .fancybox-skin {
 	border-radius: 1em;
+	background: transparent;
 }
 .als_fancybox .fancybox-inner {
     overflow: hidden !important;
