@@ -214,17 +214,29 @@ Disable ability for child iframe to resize itself.
 	
 ------- */
 
+	// Set URL paramter for cross-domain analytics tracking.
+
+	function decorateLinksIfAnalytics(url) {
+		if(window.ga) {
+			ga(function(tracker) {
+				var linker = new window.gaplugins.Linker(tracker);
+				url = linker.decorate(url);		// Appends query string parameter to URL that allows for cross-domain analytics tracking. Requires companion call in URL source. More: https://developers.google.com/analytics/devguides/collection/analyticsjs/cross-domain#decorate
+			});
+		}
+		return url;	
+	} 
+
 	$(document).ready(function( $ ) {
 	
 		$('body').prepend('<div id="als_lightbox" style="display:none;"></div>');
 
 		var todayDate = new Date();
-	
+		
 		//settings
 		var thisScript = document.querySelector('script[data-id="als_fancybox_js"]');
 		var boxMaxWidth = thisScript.getAttribute('data-max-width');
 		var boxMaxHeight = thisScript.getAttribute('data-max-height');
-		var boxUrl = thisScript.getAttribute('data-iframe-url'); //http://localhost/www/github/als_lightbox/weta-lightbox-src.html
+		var boxUrl = decorateLinksIfAnalytics( thisScript.getAttribute('data-iframe-url') ); //http://localhost/www/github/als_lightbox/weta-lightbox-src.html
 		var alsCookieName = thisScript.getAttribute('data-cookie-name');
 		var alsCookieDuration = thisScript.getAttribute('data-cookie-duration'); //in days
 		var alsStart = thisScript.getAttribute('data-start-date'); //'October 13, 2014 10:00:00'
