@@ -272,6 +272,8 @@ Disable ability for child iframe to resize itself.
 			scrolling: 'no',
 			maxHeight: boxMaxHeight,
 			maxWidth: boxMaxWidth,
+			height: '100%',
+			width: '100%',
 			href: boxUrl,
 			type: 'iframe',
 			helpers: {
