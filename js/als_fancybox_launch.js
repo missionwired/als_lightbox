@@ -75,7 +75,7 @@ if ( ( typeof jQuery == 'undefined' ) || ( jQuery.fn.jquery < enforceMinJQueryVe
 		thisPageUsingOtherJSLibrary = true;
 	}
 	
-	getScript('http://code.jquery.com/jquery-latest.min.js', function() {
+	getScript('//code.jquery.com/jquery-latest.min.js', function() {
 	
 		if (typeof jQuery=='undefined') {
 		
@@ -117,7 +117,7 @@ function load_fancybox($) {
 		 execute_fancybox($);
 	} else {
 
-		getScript('http://s3.amazonaws.com/annelewisllc/assets/fancybox/jquery.fancybox.pack.js', function() {
+		getScript('//s3.amazonaws.com/annelewisllc/assets/fancybox/jquery.fancybox.pack.js', function() {
 		
 			if (typeof $.fancybox !== 'function') {
 				// Super failsafe - still somehow failed...
@@ -140,7 +140,7 @@ function load_fancybox_css($) {
 			fancybox_base_style_tag.rel  = 'stylesheet';
 			fancybox_base_style_tag.type = 'text/css';
 			fancybox_base_style_tag.media = 'screen';
-			fancybox_base_style_tag.href = 'http://s3.amazonaws.com/annelewisllc/assets/fancybox/jquery.fancybox.css';
+			fancybox_base_style_tag.href = '//s3.amazonaws.com/annelewisllc/assets/fancybox/jquery.fancybox.css';
 			fancybox_base_style_tag.id = 'als_fancybox_base_style_tag';
 		document.getElementsByTagName('head')[0].appendChild(fancybox_base_style_tag);
 	}
