@@ -242,7 +242,8 @@ Disable ability for child iframe to resize itself.
 		var alsStart = thisScript.getAttribute('data-start-date'); //'October 13, 2014 10:00:00'
 		var alsEnd = thisScript.getAttribute('data-end-date'); //'December 13, 2014 23:59:59'
 		var alsTestMode = thisScript.getAttribute('data-test-mode');
-	
+		var closeBtnOnDarkBG = thisScript.getAttribute('data-close-btn-dark-bg');
+		
 		//defaults
 		if(!alsCookieName) {
 			alsCookieName = "fancybox_als";
@@ -267,7 +268,7 @@ Disable ability for child iframe to resize itself.
 			closeBtn: true,
 			autoSize: true,
 			autoScale: false,
-			wrapCSS: 'als_fancybox',
+			wrapCSS: 'als_fancybox' + ( closeBtnOnDarkBG ? ' close-btn-dark-bg' : '' ),
 			scrollOutside: true, //If true, the script will try to avoid horizontal scrolling for iframes and html content 
 			scrolling: 'no',
 			maxHeight: boxMaxHeight,
@@ -293,10 +294,6 @@ Disable ability for child iframe to resize itself.
 // 			}				
 		});
 		
-		if(	thisScript.getAttribute('data-close-btn-dark-bg') ) {
-			$('.als_fancybox a.fancybox-close').addClass('dark-bg');
-		}
-	
 		if(
 			(!readCookieAls(alsCookieName)
 			&& todayDate > new Date(alsStart)
