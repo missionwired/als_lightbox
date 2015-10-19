@@ -40,6 +40,10 @@ Max height of the iframe. This is related to the dimensions of the iframe source
 
 Source URL for the iframe.
 
+    data-close-btn-dark-bg="1"
+
+Styles the lightbox close button to overlay dark backgrounds. Optional.
+
     data-start-date="February 26, 2015 05:00:00"
 
 Start time for the splash to be display in UTC. Currently set to the start of the day tomorrow, Feb 26

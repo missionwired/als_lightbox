@@ -292,7 +292,10 @@ Disable ability for child iframe to resize itself.
 //  				if(postMessage_width != 0) { fancybox_change_width(postMessage_width); }
 // 			}				
 		});
-	
+		
+		if(	thisScript.getAttribute('data-close-btn-dark-bg') ) {
+			$('.als_fancybox a.fancybox-close').addClass('dark-bg');
+		}
 	
 		if(
 			(!readCookieAls(alsCookieName)
