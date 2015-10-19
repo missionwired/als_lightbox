@@ -31,5 +31,37 @@
 </script>
 
 
+<style>
+
+.als_fancybox a.fancybox-close {
+	background: none;
+	text-decoration: none; 
+	top: 0px;
+	right: 0px;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	cursor: pointer;
+	filter: alpha(opacity=20);
+	opacity: .3;
+
+	font-size: 24px;	
+	line-height: 40px;
+	font-weight: 700;
+	color: #000;
+	text-shadow: 0 1px 0 #fff;
+}
+
+.als_fancybox a.fancybox-close:after {
+	content:'\00D7'; 	/* Equivalent to &times; or × */
+}
+
+.als_fancybox a.fancybox-close:hover {
+	filter: alpha(opacity=50);
+	opacity: .6
+}
+
+</style>
+
  </body>
 </html>
