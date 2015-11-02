@@ -5,6 +5,7 @@
 
 function alsFancyboxLaunch() {
 
+	// Set killSwitch to true to disable lightbox completely. Useful for turning on and off from the script, rather than relying on webmaster.
 	var killSwitch = false;
 	if (killSwitch) { return; }
 
