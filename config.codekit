@@ -2807,6 +2807,48 @@
 		"outputStyle": 2,
 		"syntaxCheckerStyle": 1
 		},
+	"\/lightbox_src\/clintonfoundation\/img\/clintonbg.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 0,
+		"inputAbbreviatedPath": "\/lightbox_src\/clintonfoundation\/img\/clintonbg.png",
+		"outputAbbreviatedPath": "\/lightbox_src\/clintonfoundation\/img\/clintonbg.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/lightbox_src\/clintonfoundation\/img\/Next-Button.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 0,
+		"inputAbbreviatedPath": "\/lightbox_src\/clintonfoundation\/img\/Next-Button.png",
+		"outputAbbreviatedPath": "\/lightbox_src\/clintonfoundation\/img\/Next-Button.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/lightbox_src\/clintonfoundation\/img\/top_mobile.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 0,
+		"inputAbbreviatedPath": "\/lightbox_src\/clintonfoundation\/img\/top_mobile.png",
+		"outputAbbreviatedPath": "\/lightbox_src\/clintonfoundation\/img\/top_mobile.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/lightbox_src\/clintonfoundation\/lightbox-src-demo.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/lightbox_src\/clintonfoundation\/lightbox-src-demo.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/README.md": {
 		"criticStyle": 0,
 		"enableFootnotes": 1,
