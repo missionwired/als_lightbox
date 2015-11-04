@@ -2829,6 +2829,28 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/lightbox_src\/clintonfoundation\/img\/2015-11-b-bg.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 760120,
+		"inputAbbreviatedPath": "\/lightbox_src\/clintonfoundation\/img\/2015-11-b-bg.png",
+		"outputAbbreviatedPath": "\/lightbox_src\/clintonfoundation\/img\/2015-11-b-bg.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/lightbox_src\/clintonfoundation\/img\/2015-11-b-top-mobile.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 339079,
+		"inputAbbreviatedPath": "\/lightbox_src\/clintonfoundation\/img\/2015-11-b-top-mobile.png",
+		"outputAbbreviatedPath": "\/lightbox_src\/clintonfoundation\/img\/2015-11-b-top-mobile.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/lightbox_src\/clintonfoundation\/img\/cf-logo.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -2878,6 +2900,15 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/lightbox_src\/clintonfoundation\/lightbox-src-2015-01-a.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/lightbox_src\/clintonfoundation\/lightbox-src-2015-01-b.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/lightbox_src\/clintonfoundation\/lightbox-src-2015-01-b.html",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
