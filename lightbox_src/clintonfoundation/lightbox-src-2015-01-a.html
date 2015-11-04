@@ -339,7 +339,7 @@ button.lightbox-btn.lightbox-btn-mini, input.lightbox-btn.lightbox-btn-mini[type
 	display: none;
     }
     #lightbox {
-        background: url('img/clintonbg.png') no-repeat;
+        background: url('img/2015-11-a-bg.png') no-repeat;
         /* background-size: contain; */
         height: 528px;
         width: 888px;
@@ -367,12 +367,12 @@ button.lightbox-btn.lightbox-btn-mini, input.lightbox-btn.lightbox-btn-mini[type
         text-align: center;
 	}
     #lightbox-left h2 {
-		font-size: 24pt;
+		font-size: 22pt;
 		text-transform: uppercase;
 		font-weight: 300;
     }
 	#lightbox-left h3 {
-		font-size: 12pt;
+		font-size: 13pt;
 		font-weight: 400;
 	}
 	#lightbox #lightbox-right {
@@ -498,6 +498,7 @@ button.lightbox-btn.lightbox-btn-mini, input.lightbox-btn.lightbox-btn-mini[type
     }
     .amount-btn {
 		    width: 45%;
+        max-width: 165px;
     }
     .amount-other {
 		font-size: 14pt;
@@ -608,14 +609,15 @@ button.lightbox-btn.lightbox-btn-mini, input.lightbox-btn.lightbox-btn-mini[type
     {
         body {
             background: #0d345f;
+            background-image: url("img/2015-11-a-top-mobile.png");
+            background-repeat: no-repeat;
+            background-position: right top;
+            background-size: auto 180px;
+            border-radius: 10px;
         }
 
         #lightbox {
-            background: #0d345f;
-            background-image: url("img/top_mobile.png");
-            background-repeat: no-repeat;
-            background-position: center top;
-            background-size: 460px;
+            background: transparent;
             border-radius: 10px;
             margin: auto;
             max-width: 480px;
@@ -633,6 +635,10 @@ button.lightbox-btn.lightbox-btn-mini, input.lightbox-btn.lightbox-btn-mini[type
             text-align: left;
             margin-left: 5px;
         }
+
+        #lightbox #lightbox-right h2 {
+        }
+
         #lightbox h2, #lightbox h3 {
             font-weight: bold;
             line-height: 1.2em;
@@ -663,7 +669,6 @@ button.lightbox-btn.lightbox-btn-mini, input.lightbox-btn.lightbox-btn-mini[type
 		}
 		#lightbox #lightbox-right {
 			float: none;
-			padding-top: 20px;
 			padding-bottom: 17px;
 			width: 60%;
 		}
@@ -675,7 +680,20 @@ button.lightbox-btn.lightbox-btn-mini, input.lightbox-btn.lightbox-btn-mini[type
 			margin-left: 10px;
 			margin-right: 10px;
 		}
+
     }
+
+h1 { display: none; }
+#lightbox-left { padding-top: 20px; }
+
+@media screen and (max-width: 800px) {
+  h1 {
+    display: block;
+    margin: 10px;
+  }
+}
+
+
 
 </style>
 
@@ -683,14 +701,14 @@ button.lightbox-btn.lightbox-btn-mini, input.lightbox-btn.lightbox-btn-mini[type
 
 <body>
 
+  <h1><img src="img/cf-logo.png" height="90"></h1>
+
 	<div id="lightbox">
-		<div id="lightbox-right">
-			<h3>Deadline: December 31</h3>
-			<h2>All gifts matched up to $100,000</h2>
-		</div>
-		<div id="lightbox-left">
-			<h2>Help the Clinton Foundation change lives.</h2>
-			<h3>Make your tax-deductible gift today.</h3>
+    <div id="lightbox-left">
+			<h2>Support our work<br>
+          around the world.</h2>
+			<h3>Make a tax-deductible gift to<br>
+          the Clinton Foundation today.</h3>
 			<form id="donation-form" action="https://bbis.clintonfoundation.org/als/als-donation-page-for-testing-v6" method="get" enctype="multipart/form-data" target="_parent">
 				<span>
 				<input type="radio" name="amount" value="25" id="v25">
