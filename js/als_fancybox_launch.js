@@ -159,7 +159,8 @@ function alsFancyboxLaunch() {
 			als_style_tag.rel  = 'stylesheet';
 			als_style_tag.type = 'text/css';
 			als_style_tag.media = 'all';
-			als_style_tag.href = '//annelewisllc.s3.amazonaws.com/assets/splash/css/als_fancybox_launch.css';
+			als_style_tag.href = '../css/als_fancybox_launch.css';
+			// als_style_tag.href = '//annelewisllc.s3.amazonaws.com/assets/splash/css/als_fancybox_launch.css';
 		document.getElementsByTagName('head')[0].appendChild(als_style_tag);
 
 		// Add postMessage listener to allow child iframe to close itself.
@@ -288,7 +289,7 @@ function alsFancyboxLaunch() {
 				},
 				tpl: {
 					wrap     : '<div class="als-fancybox-wrap fancybox-wrap" tabIndex="-1"><div class="als-fancybox-skin fancybox-skin"><div class="fancybox-outer"><div class="fancybox-inner als-fancybox-inner"></div></div></div></div>',
-					closeBtn : '<a title="Close" class="fancybox-item als-fancybox-close fancybox-close" href="javascript:;"></a>'
+					closeBtn : '<div class="als-fancybox-close-wrap"><a title="Close" class="fancybox-item als-fancybox-close fancybox-close hide-on-mobile" href="javascript:;"></a><a title="Close" class="fancybox-item als-fancybox-close-mobile fancybox-close" href="javascript:;"><button>Continue to Site &gt;&gt;</button></a></div>'
 				}
 	// 			, onUpdate: function() {
 	//					// Necessary to allow child frame to resize itself.
