@@ -2840,6 +2840,15 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/lightbox_src\/clintonfoundation\/lightbox-src-2011-01-a.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/lightbox_src\/clintonfoundation\/lightbox-src-2011-01-a.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/lightbox_src\/clintonfoundation\/lightbox-src-demo.html": {
 		"fileType": 8192,
 		"ignore": 0,
