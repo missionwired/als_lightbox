@@ -10,7 +10,7 @@ function alsFancyboxLaunch() {
 	if (killSwitch) { return; }
 
 	// "Remote" configuration variables. Allows script to override data- attributes set on in the target HTML page.
-	// i.e. Allows for script maintainers to cnfigure options without needing help from the webmaster.
+	// i.e. Allows for script maintainers to configure options without needing help from the webmaster.
 	var lightboxConfigOverride = {
 		'maxWidth': '',
 		'maxHeight': '',
