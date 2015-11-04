@@ -9,6 +9,19 @@ function alsFancyboxLaunch() {
 	var killSwitch = false;
 	if (killSwitch) { return; }
 
+	// "Remote" configuration variables. Allows script to override data- attributes set on in the target HTML page.
+	// i.e. Allows for script maintainers to configure options without needing help from the webmaster.
+	var lightboxConfigOverride = {
+		'maxWidth': '',
+		'maxHeight': '',
+		'iframeURL': '',
+		'startDate': '',
+		'endDate': '',
+		'cookieName': '',
+		'cookieDuration': '',
+		'testMode': ''
+	};
+
 	var enforceMinJQueryVersion = '1.6'; // Minimum required jQuery version.
 
 	// Helper functions.
@@ -231,6 +244,15 @@ function alsFancyboxLaunch() {
 			return url;
 		}
 
+		function overrideConfigAttribute(dataAttribute, overrideAttribute) {
+			if (typeof lightboxConfigOverride !== 'undefined') {
+				if (lightboxConfigOverride[overrideAttribute]) {
+					return lightboxConfigOverride[overrideAttribute];
+				}
+			}
+			return dataAttribute;
+		}
+
 		$(document).ready(function( $ ) {
 
 			$('body').prepend('<div id="als_lightbox" style="display:none;"></div>');
@@ -239,14 +261,14 @@ function alsFancyboxLaunch() {
 
 			//settings
 			var thisScript = document.querySelector('script[data-id="als_fancybox_js"]');
-			var boxMaxWidth = thisScript.getAttribute('data-max-width');
-			var boxMaxHeight = thisScript.getAttribute('data-max-height');
-			var boxUrl = decorateLinksIfAnalytics( thisScript.getAttribute('data-iframe-url') ); //http://localhost/www/github/als_lightbox/weta-lightbox-src.html
-			var alsCookieName = thisScript.getAttribute('data-cookie-name');
-			var alsCookieDuration = thisScript.getAttribute('data-cookie-duration'); //in days
-			var alsStart = thisScript.getAttribute('data-start-date'); //'October 13, 2014 10:00:00'
-			var alsEnd = thisScript.getAttribute('data-end-date'); //'December 13, 2014 23:59:59'
-			var alsTestMode = thisScript.getAttribute('data-test-mode');
+			var boxMaxWidth = overrideConfigAttribute(thisScript.getAttribute('data-max-width'), 'maxWidth');
+			var boxMaxHeight = overrideConfigAttribute(thisScript.getAttribute('data-max-height'), 'maxHeight');
+			var boxUrl = decorateLinksIfAnalytics(overrideConfigAttribute(thisScript.getAttribute('data-iframe-url'), 'iframeURL'));
+			var alsCookieName = overrideConfigAttribute(thisScript.getAttribute('data-cookie-name'), 'cookieName');
+			var alsCookieDuration = overrideConfigAttribute(thisScript.getAttribute('data-cookie-duration'), 'cookieDuration');
+			var alsStart = overrideConfigAttribute(thisScript.getAttribute('data-start-date'), 'startDate');
+			var alsEnd = overrideConfigAttribute(thisScript.getAttribute('data-end-date'), 'endDate');
+			var alsTestMode = overrideConfigAttribute(thisScript.getAttribute('data-test-mode'), 'testMode');
 
 			//defaults
 			if(!alsCookieName) {
