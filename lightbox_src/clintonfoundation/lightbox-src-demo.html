@@ -9,7 +9,7 @@
 jQuery(window).load(function () {
 
     var demoMode = false;
-    
+
     var todayDate = new Date();
     if (demoMode == true) {
             var demoDay = prompt("Enter day of month (1 - 31) for preview");
@@ -22,7 +22,7 @@ jQuery(window).load(function () {
     if (todayDate >= new Date(2015,6 - 1,22,0,0) && todayDate < new Date(2015,6 - 1,24,10,0)) {
             $('#lightbox.als').addClass("date20150622");
     } else if (todayDate >= new Date(2015,6 - 1,24,10,0)) {
-            $('#lightbox.als').addClass("date20150624");            
+            $('#lightbox.als').addClass("date20150624");
     } else {
             $('#lightbox.als').addClass("date20150622");
     }
@@ -33,16 +33,16 @@ jQuery(window).load(function () {
     if( $('input.amount-other').val() ) {
         $('#donation-form input#vOther').prop('checked', true);
     }
-     
+
     $('#donation-form input[type="radio"]').on('click', function() {
         $('#donation-form input[type="radio"]:checked').siblings('label').addClass('amount-btn-selected');
         $('#donation-form input[type="radio"]:not(:checked)').siblings('label').removeClass('amount-btn-selected');
         $('#donation-form input#vOther').prop('checked', false);
         $('input.amount-other').val( "" );
-        
+
         document.getElementById("donation-form").submit();
     });
-    
+
     $('input.amount-other').on('keyup', function() {
         if( $('input.amount-other').val() ) { //this conditional needed in case they hit delete!
             $('#donation-form input[type="radio"]:checked').prop('checked', false);
@@ -50,38 +50,38 @@ jQuery(window).load(function () {
             $('#donation-form input#vOther').prop('checked', true);
         }
     });
-     
+
     //prevent submit
     $("form#donation-form").submit(function(e) {
         var form = this;
         e.preventDefault(); // disable the default submit action
-        
+
         //format and parse otherVal, set as the val for vOther, and submit
         var otherVal = "";
         otherVal = $('input.amount-other').val();
         otherVal = otherVal.replace("$","");
         otherVal = otherVal.replace(",","");
-        otherVal = otherVal.trim();                           		  
+        otherVal = otherVal.trim();
         otherVal = parseFloat(otherVal);
 
         if( otherVal ) {
               $('input#vOther').val( otherVal );
         }
-        
+
         if( $('input#make-recurring').is(':checked') ) {
               $('input#recurring-to-pass').val('true');
         } else {
               $('input#recurring-to-pass').val('false');
         }
-        
+
         //ga('send', 'event', 'splash', 'submit', '2014EOY_1', 1);
-        
+
         form.submit();
     });
-         
-});    
-    
-    
+
+});
+
+
     //tracking?
     //ga('send', 'event', 'splash', 'display', '2014EOY_1', 1, {'nonInteraction': 1});
 </script>
@@ -281,7 +281,7 @@ input.lightbox-btn-block[type="submit"], input.lightbox-btn-block[type="reset"],
 }
 #lightbox-next {
     display: none;
-    
+
 	background-image: url("img/Next-Button.png");
 	background-color: rgba(255,255,255,0);
     background-size: cover;
@@ -353,8 +353,8 @@ button.lightbox-btn.lightbox-btn-mini, input.lightbox-btn.lightbox-btn-mini[type
 	    color: #567383;
         font-family: Verdana;
         font-size: 20pt;
-        line-height: 1.5em;   
-    }    
+        line-height: 1.5em;
+    }
 	#lightbox-copy :first-child {
 		padding-top: 10px;
 		margin-top: 0;
@@ -367,12 +367,12 @@ button.lightbox-btn.lightbox-btn-mini, input.lightbox-btn.lightbox-btn-mini[type
         text-align: center;
 	}
     #lightbox-left h2 {
-		font-size: 29pt;
+		font-size: 24pt;
 		text-transform: uppercase;
 		font-weight: 300;
     }
 	#lightbox-left h3 {
-		font-size: 18pt;
+		font-size: 12pt;
 		font-weight: 400;
 	}
 	#lightbox #lightbox-right {
@@ -384,13 +384,13 @@ button.lightbox-btn.lightbox-btn-mini, input.lightbox-btn.lightbox-btn-mini[type
 	#lightbox #lightbox-right h2 {
 		font-family: 'Open Sans Condensed';
 		font-weight: bold;
-		font-size: 20pt;
+		font-size: 16pt;
 		color: white;
 	}
 	#lightbox #lightbox-right h3 {
 		color: white;
 		font-weight: 300;
-		font-size: 16pt;
+		font-size: 12pt;
 	}
     #recurring-check {
 		display: block;
@@ -404,7 +404,7 @@ button.lightbox-btn.lightbox-btn-mini, input.lightbox-btn.lightbox-btn-mini[type
     label[for="wOther"] {
         text-transform: capitalize;
     }
-    
+
     .lightbox-btn {
         -moz-border-bottom-colors: none;
         -moz-border-left-colors: none;
@@ -497,9 +497,7 @@ button.lightbox-btn.lightbox-btn-mini, input.lightbox-btn.lightbox-btn-mini[type
         width: 100%;
     }
     .amount-btn {
-		/* max-width: 127px; */
-                max-width: 196px;
-		width: 100%;
+		    width: 45%;
     }
     .amount-other {
 		font-size: 14pt;
@@ -517,7 +515,7 @@ button.lightbox-btn.lightbox-btn-mini, input.lightbox-btn.lightbox-btn-mini[type
 	font-size: 12pt;
 	color: #222222;
     }
-    
+
     .amount-btn, .lightbox-btn-success {
 	font-size: 17pt;
 	font-weight: 300;
@@ -544,7 +542,7 @@ button.lightbox-btn.lightbox-btn-mini, input.lightbox-btn.lightbox-btn-mini[type
 	.amount-btn:active {
 		background: #0d345f;
 	}
-    
+
     .lightbox-btn-success, .amount-btn-selected {
         background-color: #0d345f;
         background-image: none;
@@ -562,7 +560,7 @@ button.lightbox-btn.lightbox-btn-mini, input.lightbox-btn.lightbox-btn-mini[type
     }
     .lightbox-btn-success:active, .lightbox-btn-success.active {
     }
-    
+
     .lightbox-btn-default {
         background-color: #9ca6ab;
         background-image: none;
@@ -576,15 +574,15 @@ button.lightbox-btn.lightbox-btn-mini, input.lightbox-btn.lightbox-btn-mini[type
         font-weight: bold;
         padding: 6px 0px;
 	width: 100%;
-	max-width: 270px;	
+	max-width: 270px;
     }
     .lightbox-btn-default:hover, .lightbox-btn-default:focus, .lightbox-btn-default:active, .lightbox-btn-default.active, .lightbox-btn-default.disabled, .lightbox-btn-default[disabled] {
         background-color: #b7c2c8;
         color: #ffffff;
     }
     .lightbox-btn-default:active, .lightbox-btn-default.active {
-    }    
-    
+    }
+
     button.lightbox-btn, input.lightbox-btn[type="submit"] {
     }
     button.lightbox-btn::-moz-focus-inner, input.lightbox-btn[type="submit"]::-moz-focus-inner {
@@ -604,7 +602,7 @@ button.lightbox-btn.lightbox-btn-mini, input.lightbox-btn.lightbox-btn-mini[type
 	height: 10px;
 	line-height: 3px;
 	vertical-align: middle;
-    }    
+    }
 
     @media screen and (max-width: 800px)
     {
@@ -714,7 +712,7 @@ button.lightbox-btn.lightbox-btn-mini, input.lightbox-btn.lightbox-btn-mini[type
 				<label class="amount-btn lightbox-btn lightbox-btn-large" for="v1000">$1,000</label></span>
                                 <span>
 				<input type="radio" name="amount" value="2500" id="v2500">
-				<label class="amount-btn lightbox-btn lightbox-btn-large" for="v2500">$2,500</label></span>                                
+				<label class="amount-btn lightbox-btn lightbox-btn-large" for="v2500">$2,500</label></span>
                                 <span>
                                 <input type="radio" name="amount" value="" id="wOther" style="display: none;">
 				<label class="amount-btn lightbox-btn lightbox-btn-large" for="wOther">Other</label>
