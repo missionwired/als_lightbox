@@ -52,6 +52,12 @@
 
     .als_fancybox .fancybox-skin {
 	height: 100% !important;
+
+	/* Fullscreen on iPhone 6s. */
+	max-width: 414px;
+
+	margin-left: auto;
+	margin-right: auto;
     }
     .als_fancybox .fancybox-outer,
     .als_fancybox .fancybox-inner {
