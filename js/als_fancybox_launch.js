@@ -159,7 +159,7 @@ function alsFancyboxLaunch() {
 			als_style_tag.rel  = 'stylesheet';
 			als_style_tag.type = 'text/css';
 			als_style_tag.media = 'all';
-			als_style_tag.href = '../css/als_fancybox_launch.css';
+			als_style_tag.href = 'css/als_fancybox_launch.css';
 			// als_style_tag.href = '//annelewisllc.s3.amazonaws.com/assets/splash/css/als_fancybox_launch.css';
 		document.getElementsByTagName('head')[0].appendChild(als_style_tag);
 
