@@ -1,3 +1,5 @@
+/*global ga:true */
+
 // Anne Lewis Strategies
 // Generalized lightbox asset
 // uses fancybox in iframe
@@ -92,7 +94,7 @@ alsLightbox.launch = function () {
 		// Attach handlers for all browsers
 		script.onload = script.onreadystatechange = function() {
 
-			if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
+			if (!done && (!this.readyState || this.readyState === 'loaded' || this.readyState === 'complete')) {
 
 			done = true;
 
@@ -102,21 +104,23 @@ alsLightbox.launch = function () {
 				script.onload = script.onreadystatechange = null;
 				head.removeChild(script);
 
-			};
+			}
 
 		};
 
 		head.appendChild(script);
 
-	};
+	}
 
 	function createCookieAls(name,value,days) {
-		if (days) {
+		var expires = '';
+    if (days) {
 			var date = new Date();
 			date.setTime(date.getTime()+(days*24*60*60*1000));
-			var expires = "; expires="+date.toGMTString();
-		}
-		else var expires = "";
+			expires = "; expires="+date.toGMTString();
+		} else {
+      expires = '';
+    }
 		document.cookie = name+"="+value+expires+"; path=/";
 	}
 
@@ -125,14 +129,10 @@ alsLightbox.launch = function () {
 		var ca = document.cookie.split(';');
 		for(var i=0;i < ca.length;i++) {
 			var c = ca[i];
-			while (c.charAt(0)==' ') c = c.substring(1,c.length);
-			if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+			while (c.charAt(0)===' ') { c = c.substring(1,c.length); }
+			if (c.indexOf(nameEQ) === 0) { return c.substring(nameEQ.length,c.length); }
 		}
 		return null;
-	}
-
-	function eraseCookieAls(name) {
-		createCookie(name,"",-1);
 	}
 
 	// Load jQuery if not present. Technique from http://css-tricks.com/snippets/jquery/load-jquery-only-if-not-present/
@@ -140,16 +140,16 @@ alsLightbox.launch = function () {
 	var thisPageUsingOtherJSLibrary = false;
 
 	// Only do anything if jQuery isn't defined
-	if ( ( typeof jQuery == 'undefined' ) || ( jQuery.fn.jquery < enforceMinJQueryVersion ) ) {
+	if ( ( typeof jQuery === 'undefined' ) || ( jQuery.fn.jquery < enforceMinJQueryVersion ) ) {
 
-		if (typeof $ == 'function') {
+		if (typeof $ === 'function') {
 			// warning, global var
 			thisPageUsingOtherJSLibrary = true;
 		}
 
 		getScript(alsLightbox.config.paths.jQuery, function() {
 
-			if (typeof jQuery=='undefined') {
+			if (typeof jQuery === 'undefined') {
 
 				// Super failsafe - still somehow failed...
 
@@ -178,13 +178,13 @@ alsLightbox.launch = function () {
 
 		load_fancybox($);
 
-	};
+	}
 
 	// Load Fancybox if not present.
 
 	function load_fancybox($) {
 
-		if(typeof $.fancybox == 'function') {
+		if(typeof $.fancybox === 'function') {
 			 load_fancybox_css($);
 			 execute_fancybox($);
 		} else {
@@ -245,11 +245,11 @@ alsLightbox.launch = function () {
 		// Create IE + others compatible event handler
 		var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
 		var eventer = window[eventMethod];
-		var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+		var messageEvent = eventMethod === "attachEvent" ? "onmessage" : "message";
 
 		// Listen to message from child window
 		eventer(messageEvent,function(e) {
-			if (e.data == 'fancybox.close') {
+			if (e.data === 'fancybox.close') {
 				jQuery.fancybox.close();
 			}
 		},false);
@@ -345,7 +345,7 @@ alsLightbox.launch = function () {
 				maxWidth: alsLightbox.config.active.maxWidth,
 				height: '100%',
 				width: '100%',
-				href: alsLightbox.config.active.iframeURL,
+				href: decorateLinksIfAnalytics(alsLightbox.config.active.iframeURL),
 				type: 'iframe',
 				helpers: {
 					overlay: {
@@ -366,9 +366,9 @@ alsLightbox.launch = function () {
 
 
 			if(
-				(!readCookieAls(alsLightbox.config.active.cookieName)
-				&& todayDate > new Date(alsLightbox.config.active.startDate)
-				&& todayDate < new Date(alsLightbox.config.active.endDate)
+				(!readCookieAls(alsLightbox.config.active.cookieName) &&
+				todayDate > new Date(alsLightbox.config.active.startDate) &&
+				todayDate < new Date(alsLightbox.config.active.endDate)
 			) || (
 				alsLightbox.config.active.testMode >= 1
 			)) {
