@@ -33,6 +33,7 @@
 
     .als_fancybox .fancybox-inner {
 		overflow: scroll !important; /* Allow overlay to scroll on mobile. */
+		border-radius: 10px;
 	}
 
     /* !important used to overwrite inline styles */
