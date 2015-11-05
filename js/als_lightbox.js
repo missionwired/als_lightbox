@@ -3,7 +3,7 @@
 // Anne Lewis Strategies
 // Generalized lightbox asset
 // uses fancybox in iframe
-// Developed by by Ben Long <ben@annelewisllc.com>.
+// Developed by by Ben Long <ben@annelewisllc.com> and Todd Plants <todd@annelewisllc.com>.
 
 function isEmpty(obj) {
   for(var prop in obj) {
