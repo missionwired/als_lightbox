@@ -37,7 +37,7 @@ Webmasters can set configurations in two ways:
 ------------------------|------------
 `data-id`               | Required. Set to `als_lightbox`.
 `data-configFile`       | Path to configuration JSON. Relative to the underlying HTML page.
-`data-iframeURL`        |
+`data-iframeURL`        | Path to the html source of lightbox iframe. Relative to the underlying HTML page.
 `data-maxWidth`         | The maximum width of the lightbox on desktop. In most cases this can be thought of as the "desktop width."
 `data-maxHeight`        | The maximum height of the lightbox on desktop. In most cases this can be thought of as the "desktop height.
 `data-startDate`        | Date and time to _start_ showing the lightbox to visits. Javascript UTC Date() format.
