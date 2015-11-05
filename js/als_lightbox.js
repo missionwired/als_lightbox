@@ -12,7 +12,7 @@ function isEmpty(obj) {
   return true;
 }
 
-var alsLightbox = {};
+var alsLightbox = function() {
 
 alsLightbox.thisScriptID = "als_lightbox_js";
 
@@ -379,5 +379,7 @@ alsLightbox.launch = function () {
 		});
 
 	}
+
+};
 
 };
