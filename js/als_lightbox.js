@@ -32,6 +32,21 @@ alsLightbox.config.available = {
 	"killSwitch": ["killSwitch"]
 };
 
+alsLightbox.config.paths = {
+	"jQuery": "//code.jquery.com/jquery-latest.min.js",
+	"fancybox_js": "//s3.amazonaws.com/clintonfoundation/lightbox/bower_components/fancybox/source/jquery.fancybox.pack.js",
+	"fancybox_css": "//s3.amazonaws.com/clintonfoundation/lightbox/bower_components/fancybox/source/jquery.fancybox.css",
+	"als_lightbox_css": "//s3.amazonaws.com/clintonfoundation/lightbox/css/als_lightbox.css"
+};
+
+// Relative paths for localhost testing.
+// alsLightbox.config.paths = {
+// 	"jQuery": "bower_components/jquery/dist/jquery.min.js",
+// 	"fancybox_js": "bower_components/fancybox/source/jquery.fancybox.pack.js",
+// 	"fancybox_css": "bower_components/fancybox/source/jquery.fancybox.css",
+// 	"als_lightbox_css": "css/als_lightbox.css"
+// };
+
 alsLightbox.config.active = {};
 alsLightbox.config.external = {};
 alsLightbox.config.active.configFile = alsLightbox.thisScript.getAttribute('data-configFile');
@@ -132,7 +147,7 @@ alsLightbox.launch = function () {
 			thisPageUsingOtherJSLibrary = true;
 		}
 
-		getScript('//code.jquery.com/jquery-latest.min.js', function() {
+		getScript(alsLightbox.config.paths.jQuery, function() {
 
 			if (typeof jQuery=='undefined') {
 
@@ -174,7 +189,7 @@ alsLightbox.launch = function () {
 			 execute_fancybox($);
 		} else {
 
-			getScript('//s3.amazonaws.com/annelewisllc/assets/fancybox/jquery.fancybox.pack.js', function() {
+			getScript(alsLightbox.config.paths.fancybox_js, function() {
 
 				if (typeof $.fancybox !== 'function') {
 					// Super failsafe - still somehow failed...
@@ -197,7 +212,7 @@ alsLightbox.launch = function () {
 				fancybox_base_style_tag.rel  = 'stylesheet';
 				fancybox_base_style_tag.type = 'text/css';
 				fancybox_base_style_tag.media = 'screen';
-				fancybox_base_style_tag.href = '//s3.amazonaws.com/annelewisllc/assets/fancybox/jquery.fancybox.css';
+				fancybox_base_style_tag.href = alsLightbox.config.paths.fancybox_css;
 				fancybox_base_style_tag.id = 'als_fancybox_base_style_tag';
 			document.getElementsByTagName('head')[0].appendChild(fancybox_base_style_tag);
 		}
@@ -212,8 +227,7 @@ alsLightbox.launch = function () {
 			als_style_tag.rel  = 'stylesheet';
 			als_style_tag.type = 'text/css';
 			als_style_tag.media = 'all';
-			als_style_tag.href = 'css/als_fancybox_launch.css';
-			// als_style_tag.href = '//annelewisllc.s3.amazonaws.com/assets/splash/css/als_fancybox_launch.css';
+			als_style_tag.href = alsLightbox.config.paths.als_lightbox_css;
 		document.getElementsByTagName('head')[0].appendChild(als_style_tag);
 
 		// Add postMessage listener to allow child iframe to close itself.
