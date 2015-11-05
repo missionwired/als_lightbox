@@ -8,6 +8,6 @@
   "cookieName": "als_lightbox",
   "cookieDuration": "1",
   "supplementalCSS": "//s3.amazonaws.com/clintonfoundation/lightbox/clients/clintonfoundation/css/als_lightbox_clintonfoundation.css",
-  "testMode": "0",
+  "testMode": "1",
   "killSwitch": false
 }
