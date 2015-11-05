@@ -3042,45 +3042,45 @@
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 633169,
+		"initialSize": 153861,
 		"inputAbbreviatedPath": "\/clients\/clintonfoundation\/lightbox_src\/img\/2015-11-a-bg.png",
 		"outputAbbreviatedPath": "\/clients\/clintonfoundation\/lightbox_src\/img\/2015-11-a-bg.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"processed": 0
+		"processed": 1
 		},
 	"\/clients\/clintonfoundation\/lightbox_src\/img\/2015-11-a-top-mobile.png": {
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 285128,
+		"initialSize": 61860,
 		"inputAbbreviatedPath": "\/clients\/clintonfoundation\/lightbox_src\/img\/2015-11-a-top-mobile.png",
 		"outputAbbreviatedPath": "\/clients\/clintonfoundation\/lightbox_src\/img\/2015-11-a-top-mobile.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"processed": 0
+		"processed": 1
 		},
 	"\/clients\/clintonfoundation\/lightbox_src\/img\/2015-11-b-bg.png": {
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 765088,
+		"initialSize": 205343,
 		"inputAbbreviatedPath": "\/clients\/clintonfoundation\/lightbox_src\/img\/2015-11-b-bg.png",
 		"outputAbbreviatedPath": "\/clients\/clintonfoundation\/lightbox_src\/img\/2015-11-b-bg.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"processed": 0
+		"processed": 1
 		},
 	"\/clients\/clintonfoundation\/lightbox_src\/img\/2015-11-b-top-mobile.png": {
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 323607,
+		"initialSize": 73113,
 		"inputAbbreviatedPath": "\/clients\/clintonfoundation\/lightbox_src\/img\/2015-11-b-top-mobile.png",
 		"outputAbbreviatedPath": "\/clients\/clintonfoundation\/lightbox_src\/img\/2015-11-b-top-mobile.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"processed": 0
+		"processed": 1
 		},
 	"\/clients\/clintonfoundation\/lightbox_src\/img\/cf-logo.png": {
 		"fileType": 32768,
@@ -3240,20 +3240,20 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/index-b.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/index-b.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/index.html": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/index.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/index_config.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/index_config.html",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
