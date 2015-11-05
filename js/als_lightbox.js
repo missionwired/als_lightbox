@@ -42,25 +42,31 @@ alsLightbox.config.paths = {
 };
 
 // Relative paths for localhost testing.
-// alsLightbox.config.paths = {
-// 	"jQuery": "bower_components/jquery/dist/jquery.min.js",
-// 	"fancybox_js": "bower_components/fancybox/source/jquery.fancybox.pack.js",
-// 	"fancybox_css": "bower_components/fancybox/source/jquery.fancybox.css",
-// 	"als_lightbox_css": "css/als_lightbox.css"
-// };
+alsLightbox.config.paths = {
+	"jQuery": "bower_components/jquery/dist/jquery.min.js",
+	"fancybox_js": "bower_components/fancybox/source/jquery.fancybox.pack.js",
+	"fancybox_css": "bower_components/fancybox/source/jquery.fancybox.css",
+	"als_lightbox_css": "css/als_lightbox.css"
+};
 
 alsLightbox.config.active = {};
 alsLightbox.config.external = {};
 alsLightbox.config.active.configFile = alsLightbox.thisScript.getAttribute('data-configFile') ? alsLightbox.thisScript.getAttribute('data-configFile') : '';
 
-$.getJSON(alsLightbox.config.active.configFile ? alsLightbox.config.active.configFile : '', function(json) {
-	alsLightbox.config.external = json;
-	alsLightbox.setActiveConfig();
-	alsLightbox.launch();
-}).fail(function() {
-	alsLightbox.setActiveConfig();
-	alsLightbox.launch();
-});
+var xhr = new XMLHttpRequest();
+xhr.open('GET', encodeURI(alsLightbox.config.active.configFile ? alsLightbox.config.active.configFile : ''));
+xhr.onload = function() {
+    if (xhr.status === 200) {
+      alsLightbox.config.external = xhr.responseText;
+      alsLightbox.setActiveConfig();
+      alsLightbox.launch();
+    }
+    else {
+      alsLightbox.setActiveConfig();
+      alsLightbox.launch();
+    }
+};
+xhr.send();
 
 alsLightbox.setActiveConfig = function() {
 	if (!isEmpty(alsLightbox.config.external)) {
