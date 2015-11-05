@@ -1,7 +1,9 @@
+/*global ga:true */
+
 // Anne Lewis Strategies
 // Generalized lightbox asset
 // uses fancybox in iframe
-// Developed by by Ben Long <ben@annelewisllc.com>.
+// Developed by by Ben Long <ben@annelewisllc.com> and Todd Plants <todd@annelewisllc.com>.
 
 function isEmpty(obj) {
   for(var prop in obj) {
@@ -12,16 +14,16 @@ function isEmpty(obj) {
 
 var alsLightbox = {};
 
-alsLightbox.thisScriptID = "als_fancybox_js";
+alsLightbox.thisScriptID = "als_lightbox_js";
 
 // Searches for selector ('script[data-id="als_fancybox_js"], #als_fancybox_js') or similar.
 alsLightbox.thisScript = document.querySelector('script[data-id="' + alsLightbox.thisScriptID + '"], #' + alsLightbox.thisScriptID);
 
 alsLightbox.config = {};
 alsLightbox.config.available = {
+	"iframeURL": ["iframe-url","iframeURL"],
   "maxWidth": ["max-width","maxWidth"],
   "maxHeight": ["max-height","maxHeight"],
-  "iframeURL": ["iframe-url","iframeURL"],
 	"startDate": ["start-date","startDate"],
 	"endDate": ["end-date","endDate"],
 	"cookieName": ["cookie-name","cookieName"],
@@ -49,7 +51,7 @@ alsLightbox.config.paths = {
 
 alsLightbox.config.active = {};
 alsLightbox.config.external = {};
-alsLightbox.config.active.configFile = alsLightbox.thisScript.getAttribute('data-configFile');
+alsLightbox.config.active.configFile = alsLightbox.thisScript.getAttribute('data-configFile') ? alsLightbox.thisScript.getAttribute('data-configFile') : '';
 
 $.getJSON(alsLightbox.config.active.configFile ? alsLightbox.config.active.configFile : '', function(json) {
 	alsLightbox.config.external = json;
@@ -92,7 +94,7 @@ alsLightbox.launch = function () {
 		// Attach handlers for all browsers
 		script.onload = script.onreadystatechange = function() {
 
-			if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
+			if (!done && (!this.readyState || this.readyState === 'loaded' || this.readyState === 'complete')) {
 
 			done = true;
 
@@ -102,21 +104,23 @@ alsLightbox.launch = function () {
 				script.onload = script.onreadystatechange = null;
 				head.removeChild(script);
 
-			};
+			}
 
 		};
 
 		head.appendChild(script);
 
-	};
+	}
 
 	function createCookieAls(name,value,days) {
-		if (days) {
+		var expires = '';
+    if (days) {
 			var date = new Date();
 			date.setTime(date.getTime()+(days*24*60*60*1000));
-			var expires = "; expires="+date.toGMTString();
-		}
-		else var expires = "";
+			expires = "; expires="+date.toGMTString();
+		} else {
+      expires = '';
+    }
 		document.cookie = name+"="+value+expires+"; path=/";
 	}
 
@@ -125,14 +129,10 @@ alsLightbox.launch = function () {
 		var ca = document.cookie.split(';');
 		for(var i=0;i < ca.length;i++) {
 			var c = ca[i];
-			while (c.charAt(0)==' ') c = c.substring(1,c.length);
-			if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+			while (c.charAt(0)===' ') { c = c.substring(1,c.length); }
+			if (c.indexOf(nameEQ) === 0) { return c.substring(nameEQ.length,c.length); }
 		}
 		return null;
-	}
-
-	function eraseCookieAls(name) {
-		createCookie(name,"",-1);
 	}
 
 	// Load jQuery if not present. Technique from http://css-tricks.com/snippets/jquery/load-jquery-only-if-not-present/
@@ -140,16 +140,16 @@ alsLightbox.launch = function () {
 	var thisPageUsingOtherJSLibrary = false;
 
 	// Only do anything if jQuery isn't defined
-	if ( ( typeof jQuery == 'undefined' ) || ( jQuery.fn.jquery < enforceMinJQueryVersion ) ) {
+	if ( ( typeof jQuery === 'undefined' ) || ( jQuery.fn.jquery < enforceMinJQueryVersion ) ) {
 
-		if (typeof $ == 'function') {
+		if (typeof $ === 'function') {
 			// warning, global var
 			thisPageUsingOtherJSLibrary = true;
 		}
 
 		getScript(alsLightbox.config.paths.jQuery, function() {
 
-			if (typeof jQuery=='undefined') {
+			if (typeof jQuery === 'undefined') {
 
 				// Super failsafe - still somehow failed...
 
@@ -178,13 +178,13 @@ alsLightbox.launch = function () {
 
 		load_fancybox($);
 
-	};
+	}
 
 	// Load Fancybox if not present.
 
 	function load_fancybox($) {
 
-		if(typeof $.fancybox == 'function') {
+		if(typeof $.fancybox === 'function') {
 			 load_fancybox_css($);
 			 execute_fancybox($);
 		} else {
@@ -230,16 +230,26 @@ alsLightbox.launch = function () {
 			als_style_tag.href = alsLightbox.config.paths.als_lightbox_css;
 		document.getElementsByTagName('head')[0].appendChild(als_style_tag);
 
+    // Add site-specific supplemental CSS if one exists.
+    if (alsLightbox.config.active.supplementalCSS) {
+      var alsSupplementalCSSTag = document.createElement('link');
+  			alsSupplementalCSSTag.rel  = 'stylesheet';
+  			alsSupplementalCSSTag.type = 'text/css';
+  			alsSupplementalCSSTag.media = 'all';
+  			alsSupplementalCSSTag.href = alsLightbox.config.active.supplementalCSS;
+  		document.getElementsByTagName('head')[0].appendChild(alsSupplementalCSSTag);
+    }
+
 		// Add postMessage listener to allow child iframe to close itself.
 
 		// Create IE + others compatible event handler
 		var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
 		var eventer = window[eventMethod];
-		var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+		var messageEvent = eventMethod === "attachEvent" ? "onmessage" : "message";
 
 		// Listen to message from child window
 		eventer(messageEvent,function(e) {
-			if (e.data == 'fancybox.close') {
+			if (e.data === 'fancybox.close') {
 				jQuery.fancybox.close();
 			}
 		},false);
@@ -298,15 +308,6 @@ alsLightbox.launch = function () {
 			return url;
 		}
 
-		function overrideConfigAttribute(dataAttribute, overrideAttribute) {
-			if (typeof lightboxConfigOverride !== 'undefined') {
-				if (lightboxConfigOverride[overrideAttribute]) {
-					return lightboxConfigOverride[overrideAttribute];
-				}
-			}
-			return dataAttribute;
-		}
-
 		$(document).ready(function( $ ) {
 
 			$('body').prepend('<div id="als_lightbox" style="display:none;"></div>');
@@ -315,7 +316,7 @@ alsLightbox.launch = function () {
 
 			//defaults
 			if(!alsLightbox.config.active.cookieName) {
-				alsLightbox.config.active.cookieName = "fancybox_als";
+				alsLightbox.config.active.cookieName = "als_lightbox";
 			}
 			if(!alsLightbox.config.active.cookieDuration) {
 				alsLightbox.config.active.cookieDuration = 1;
@@ -344,7 +345,7 @@ alsLightbox.launch = function () {
 				maxWidth: alsLightbox.config.active.maxWidth,
 				height: '100%',
 				width: '100%',
-				href: alsLightbox.config.active.iframeURL,
+				href: decorateLinksIfAnalytics(alsLightbox.config.active.iframeURL),
 				type: 'iframe',
 				helpers: {
 					overlay: {
@@ -365,9 +366,9 @@ alsLightbox.launch = function () {
 
 
 			if(
-				(!readCookieAls(alsLightbox.config.active.cookieName)
-				&& todayDate > new Date(alsLightbox.config.active.startDate)
-				&& todayDate < new Date(alsLightbox.config.active.endDate)
+				(!readCookieAls(alsLightbox.config.active.cookieName) &&
+				todayDate > new Date(alsLightbox.config.active.startDate) &&
+				todayDate < new Date(alsLightbox.config.active.endDate)
 			) || (
 				alsLightbox.config.active.testMode >= 1
 			)) {
@@ -379,4 +380,4 @@ alsLightbox.launch = function () {
 
 	}
 
-}
+};
