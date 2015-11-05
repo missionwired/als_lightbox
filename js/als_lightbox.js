@@ -12,16 +12,16 @@ function isEmpty(obj) {
 
 var alsLightbox = {};
 
-alsLightbox.thisScriptID = "als_fancybox_js";
+alsLightbox.thisScriptID = "als_lightbox_js";
 
 // Searches for selector ('script[data-id="als_fancybox_js"], #als_fancybox_js') or similar.
 alsLightbox.thisScript = document.querySelector('script[data-id="' + alsLightbox.thisScriptID + '"], #' + alsLightbox.thisScriptID);
 
 alsLightbox.config = {};
 alsLightbox.config.available = {
+	"iframeURL": ["iframe-url","iframeURL"],
   "maxWidth": ["max-width","maxWidth"],
   "maxHeight": ["max-height","maxHeight"],
-  "iframeURL": ["iframe-url","iframeURL"],
 	"startDate": ["start-date","startDate"],
 	"endDate": ["end-date","endDate"],
 	"cookieName": ["cookie-name","cookieName"],
@@ -49,7 +49,7 @@ alsLightbox.config.paths = {
 
 alsLightbox.config.active = {};
 alsLightbox.config.external = {};
-alsLightbox.config.active.configFile = alsLightbox.thisScript.getAttribute('data-configFile');
+alsLightbox.config.active.configFile = alsLightbox.thisScript.getAttribute('data-configFile') ? alsLightbox.thisScript.getAttribute('data-configFile') : '';
 
 $.getJSON(alsLightbox.config.active.configFile ? alsLightbox.config.active.configFile : '', function(json) {
 	alsLightbox.config.external = json;
@@ -230,6 +230,16 @@ alsLightbox.launch = function () {
 			als_style_tag.href = alsLightbox.config.paths.als_lightbox_css;
 		document.getElementsByTagName('head')[0].appendChild(als_style_tag);
 
+    // Add site-specific supplemental CSS if one exists.
+    if (alsLightbox.config.active.supplementalCSS) {
+      var alsSupplementalCSSTag = document.createElement('link');
+  			alsSupplementalCSSTag.rel  = 'stylesheet';
+  			alsSupplementalCSSTag.type = 'text/css';
+  			alsSupplementalCSSTag.media = 'all';
+  			alsSupplementalCSSTag.href = alsLightbox.config.active.supplementalCSS;
+  		document.getElementsByTagName('head')[0].appendChild(alsSupplementalCSSTag);
+    }
+
 		// Add postMessage listener to allow child iframe to close itself.
 
 		// Create IE + others compatible event handler
@@ -298,15 +308,6 @@ alsLightbox.launch = function () {
 			return url;
 		}
 
-		function overrideConfigAttribute(dataAttribute, overrideAttribute) {
-			if (typeof lightboxConfigOverride !== 'undefined') {
-				if (lightboxConfigOverride[overrideAttribute]) {
-					return lightboxConfigOverride[overrideAttribute];
-				}
-			}
-			return dataAttribute;
-		}
-
 		$(document).ready(function( $ ) {
 
 			$('body').prepend('<div id="als_lightbox" style="display:none;"></div>');
@@ -315,7 +316,7 @@ alsLightbox.launch = function () {
 
 			//defaults
 			if(!alsLightbox.config.active.cookieName) {
-				alsLightbox.config.active.cookieName = "fancybox_als";
+				alsLightbox.config.active.cookieName = "als_lightbox";
 			}
 			if(!alsLightbox.config.active.cookieDuration) {
 				alsLightbox.config.active.cookieDuration = 1;
@@ -379,4 +380,4 @@ alsLightbox.launch = function () {
 
 	}
 
-}
+};

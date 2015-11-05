@@ -3,61 +3,46 @@ als_lightbox
 
 Splash pages, simplified.
 
-The code to add to headers of pages:
+The code to add to client HTML:
 -----------
 Implementation for them should be simple. Just cut and paste this code snippet:
 
-    <!-- Add ALS fancybox assets -->
-    <script type="text/javascript"
-        src="//annelewisllc.s3.amazonaws.com/assets/splash/js/als_fancybox_launch.js"
-        data-id="als_fancybox_js"
-        data-max-width="800"
-        data-max-height="450"
-        data-iframe-url="//weta.s3.amazonaws.com/2014_spring_splash/weta-lightbox-spring-src-v1.html"
-        data-start-date="February 26, 2015 05:00:00"
-        data-end-date="March 23, 2015 04:00:00" 
-        data-cookie-name="fancybox_als4"
-        data-cookie-duration="1"
-        data-test-mode="0"
-        />
-    </script>
+```html
+<!-- Add ALS Lightbox assets -->
+<script type="text/javascript"
+  src="//s3.amazonaws.com/clintonfoundation/lightbox/js/min/als_lightbox.min.js"
+  id="als_lightbox_js"
+  data-id="als_lightbox_js"
+  data-configFile="//s3.amazonaws.com/clintonfoundation/lightbox/clients/clintonfoundation/config.json"
+  data-iframeURL="//s3.amazonaws.com/clintonfoundation/lightbox/clients/clintonfoundation/lightbox_src/lightbox-src-2015-01-a.html"
+  data-maxWidth="888"
+  data-maxHeight="528"
+  data-startDate="November 6, 2015 05:00:00"
+  data-endDate="December 1, 2015 04:00:00"
+  data-cookieName="als_lightbox"
+  data-cookieDuration="1"
+  data-supplementalCSS="//s3.amazonaws.com/clintonfoundation/lightbox/clients/clintonfoundation/css/als_lightbox_clintonfoundation.css"
+  data-testMode="0"
+  />
+</script>
+```   
 
-Note that the client can adjust various options if desired:
+Webmasters can set configurations in two ways:
 
-    data-id="als_fancybox_js"
+1. Specify a config file through the `data-configFile` attribute. **Important: Setting an external config file is an all or nothing proposition. If the external file exists, it will overwrite all data- attributes.**
 
-just an ID for the script element
+2. Specify `data-` attributes as described below:
 
-    data-max-width="800" 
-
-Max width of the iframe. This is related to the dimensions of the iframe source so shouldn’t be changed on its own.
-
-    data-max-height="450"
-
-Max height of the iframe. This is related to the dimensions of the iframe source so shouldn’t be changed on its own.
-
-    data-iframe-url="//weta.s3.amazonaws.com/2014_spring_splash/weta-lightbox-spring-src-v1.html”
-
-Source URL for the iframe.
-
-    data-start-date="February 26, 2015 05:00:00"
-
-Start time for the splash to be display in UTC. Currently set to the start of the day tomorrow, Feb 26
-
-    data-end-date="March 23, 2015 04:00:00" 
-
-End time for the splash to be display in UTC. Currently set to the start of the day, Mar 23
-
-    data-cookie-name="fancybox_als4"
-
-Name of cookie controlling visibility.
-
-    data-cookie-duration="1"
-
-Cookie expiration duration in days. Currently set to show new visitors the splash once each day.
-
-    data-test-mode="0"
-    
-A value of "1" here activates test mode which always shows the splash regardless of cookies or date.
-
-
+`data-` attribute       | Description
+------------------------|------------
+`data-id`               | Required. Set to `als_lightbox`.
+`data-configFile`       | Path to configuration JSON. Relative to the underlying HTML page.
+`data-iframeURL`        |
+`data-maxWidth`         | The maximum width of the lightbox on desktop. In most cases this can be thought of as the "desktop width."
+`data-maxHeight`        | The maximum height of the lightbox on desktop. In most cases this can be thought of as the "desktop height.
+`data-startDate`        | Date and time to _start_ showing the lightbox to visits. Javascript UTC Date() format.
+`data-endDate`          | Date and time to _stop_ showing the lightbox to visits. Javascript UTC Date() format.
+`data-cookieName`       | Cookie name to track repeat site visitors. Defaults to `als_lightbox` if nothing specified.
+`data-cookieDuration`   | Number of days after which the cookie will expire and repeat visitors will see the lightbox again. Commonly set to `1` (show no more than once per day) or `30` (show no more than once per month).
+`data-supplementalCSS`  | Path to supplemental CSS file for site-specific stying tweaks.
+`data-testMode`         | Activate test mode by setting a value of `1`. Lightbox will show on every page load. Set to `0` or remove data-attribute to disable.
