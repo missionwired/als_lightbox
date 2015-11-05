@@ -1,4 +1,4 @@
-/*global ga:true */
+/*global ga:true, Drupal:true*/
 
 // Anne Lewis Strategies
 // Generalized lightbox asset
@@ -42,12 +42,12 @@ alsLightbox.config.paths = {
 };
 
 // Relative paths for localhost testing.
-alsLightbox.config.paths = {
-	"jQuery": "bower_components/jquery/dist/jquery.min.js",
-	"fancybox_js": "bower_components/fancybox/source/jquery.fancybox.pack.js",
-	"fancybox_css": "bower_components/fancybox/source/jquery.fancybox.css",
-	"als_lightbox_css": "css/als_lightbox.css"
-};
+// alsLightbox.config.paths = {
+// 	"jQuery": "bower_components/jquery/dist/jquery.min.js",
+// 	"fancybox_js": "bower_components/fancybox/source/jquery.fancybox.pack.js",
+// 	"fancybox_css": "bower_components/fancybox/source/jquery.fancybox.css",
+// 	"als_lightbox_css": "css/als_lightbox.css"
+// };
 
 alsLightbox.config.active = {};
 alsLightbox.config.external = {};
@@ -182,7 +182,9 @@ alsLightbox.launch = function () {
 
 	} else { // jQuery was already loaded
 
-		load_fancybox($);
+    (function( $ ) {
+      load_fancybox($);
+    })(jQuery);
 
 	}
 
@@ -390,4 +392,12 @@ alsLightbox.launch = function () {
 
 };
 
-alsLightbox();
+if (typeof Drupal === 'undefined') {
+  alsLightbox();
+} else {
+  Drupal.behaviors.alsLightbox = {
+    attach: function () {
+      alsLightbox();
+    }
+  };
+}
