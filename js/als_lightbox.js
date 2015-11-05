@@ -57,7 +57,7 @@ var xhr = new XMLHttpRequest();
 xhr.open('GET', encodeURI(alsLightbox.config.active.configFile ? alsLightbox.config.active.configFile : ''));
 xhr.onload = function() {
     if (xhr.status === 200) {
-      alsLightbox.config.external = xhr.responseText;
+      alsLightbox.config.external = JSON.parse(xhr.responseText);
       alsLightbox.setActiveConfig();
       alsLightbox.launch();
     }
