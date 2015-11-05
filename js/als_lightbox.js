@@ -383,3 +383,5 @@ alsLightbox.launch = function () {
 };
 
 };
+
+alsLightbox();
