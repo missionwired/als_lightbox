@@ -5,13 +5,6 @@
 // uses fancybox in iframe
 // Developed by by Ben Long <ben@annelewisllc.com> and Todd Plants <todd@annelewisllc.com>.
 
-function isEmpty(obj) {
-  for(var prop in obj) {
-    if(obj.hasOwnProperty(prop)) { return false; }
-  }
-  return true;
-}
-
 var alsLightbox = function() {
 
 alsLightbox.thisScriptID = "als_lightbox_js";
@@ -51,22 +44,13 @@ alsLightbox.config.paths = {
 
 alsLightbox.config.active = {};
 alsLightbox.config.external = {};
-alsLightbox.config.active.configFile = alsLightbox.thisScript.getAttribute('data-configFile') ? alsLightbox.thisScript.getAttribute('data-configFile') : '';
 
-var xhr = new XMLHttpRequest();
-xhr.open('GET', encodeURI(alsLightbox.config.active.configFile ? alsLightbox.config.active.configFile : ''));
-xhr.onload = function() {
-    if (xhr.status === 200) {
-      alsLightbox.config.external = JSON.parse(xhr.responseText);
-      alsLightbox.setActiveConfig();
-      alsLightbox.launch();
-    }
-    else {
-      alsLightbox.setActiveConfig();
-      alsLightbox.launch();
-    }
-};
-xhr.send();
+function isEmpty(obj) {
+  for(var prop in obj) {
+    if(obj.hasOwnProperty(prop)) { return false; }
+  }
+  return true;
+}
 
 alsLightbox.setActiveConfig = function() {
 	if (!isEmpty(alsLightbox.config.external)) {
@@ -389,6 +373,28 @@ alsLightbox.launch = function () {
 	}
 
 };
+
+alsLightbox.config.active.configFile = alsLightbox.thisScript.getAttribute('data-configFile') ? alsLightbox.thisScript.getAttribute('data-configFile') : '';
+
+if (alsLightbox.config.active.configFile) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', encodeURI(alsLightbox.config.active.configFile));
+  xhr.onload = function() {
+      if (xhr.status === 200) {
+        alsLightbox.config.external = JSON.parse(xhr.responseText);
+        alsLightbox.setActiveConfig();
+        alsLightbox.launch();
+      }
+      else {
+        alsLightbox.setActiveConfig();
+        alsLightbox.launch();
+      }
+  };
+  xhr.send();
+} else {
+  alsLightbox.setActiveConfig();
+  alsLightbox.launch();
+}
 
 };
 
