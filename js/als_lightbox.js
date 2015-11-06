@@ -398,12 +398,13 @@ if (alsLightbox.config.active.configFile) {
 
 };
 
-if (typeof Drupal === 'undefined') {
-  alsLightbox();
-} else {
-  Drupal.behaviors.alsLightbox = {
-    attach: function () {
+try {
+	Drupal.behaviors.alsLightbox = {
+	  attach: function () {
       alsLightbox();
-    }
-  };
+		}
+	};
+}
+catch(err) {
+  alsLightbox();
 }
