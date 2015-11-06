@@ -3060,6 +3060,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 1
 		},
+	"\/clients\/clintonfoundation\/lightbox_src\/img\/2015-11-b-bg.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 182779,
+		"inputAbbreviatedPath": "\/clients\/clintonfoundation\/lightbox_src\/img\/2015-11-b-bg.png",
+		"outputAbbreviatedPath": "\/clients\/clintonfoundation\/lightbox_src\/img\/2015-11-b-bg.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/clients\/clintonfoundation\/lightbox_src\/img\/2015-11-b-top-mobile.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -3269,11 +3280,11 @@
 		"outputStyle": 2,
 		"syntaxCheckerStyle": 1
 		},
-	"\/README.html": {
+	"\/readme.html": {
 		"fileType": 8192,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/README.html",
+		"inputAbbreviatedPath": "\/readme.html",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -3292,7 +3303,7 @@
 		"outputAbbreviatedPath": "\/README.html",
 		"outputFormat": 0,
 		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
+		"outputPathIsSetByUser": 1,
 		"outputStyle": 0,
 		"parseMetadata": 1,
 		"processHTML": 0,
