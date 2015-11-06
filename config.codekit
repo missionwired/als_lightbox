@@ -3060,17 +3060,6 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 1
 		},
-	"\/clients\/clintonfoundation\/lightbox_src\/img\/2015-11-b-bg.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 205343,
-		"inputAbbreviatedPath": "\/clients\/clintonfoundation\/lightbox_src\/img\/2015-11-b-bg.png",
-		"outputAbbreviatedPath": "\/clients\/clintonfoundation\/lightbox_src\/img\/2015-11-b-bg.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 1
-		},
 	"\/clients\/clintonfoundation\/lightbox_src\/img\/2015-11-b-top-mobile.png": {
 		"fileType": 32768,
 		"ignore": 0,
