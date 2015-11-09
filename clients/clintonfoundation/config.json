@@ -1,6 +1,6 @@
 {
   "configFile": "//s3.amazonaws.com/clintonfoundation/lightbox/clients/clintonfoundation/config.json",
-  "iframeURL": "//s3.amazonaws.com/clintonfoundation/lightbox/clients/clintonfoundation/lightbox_src/lightbox-src-2015-01-1.html",
+  "iframeURL": "//s3.amazonaws.com/clintonfoundation/lightbox/clients/clintonfoundation/lightbox_src/lightbox-src-2015-01-2.html",
   "maxWidth": "888",
   "maxHeight": "528",
   "startDate": "November 9, 2015 10:00:00",
