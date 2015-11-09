@@ -5,14 +5,28 @@
 // uses fancybox in iframe
 // Developed by by Ben Long <ben@annelewisllc.com> and Todd Plants <todd@annelewisllc.com>.
 
+// Create a global namespace for ALS Lightbox assets. All properties and helper functions flow from there.
+
 var alsLightbox = function() {
 
+// Expected ID attribute of the script tag calling this script.
+// TODO Graceful failure if script tag is not identified correctly.
 alsLightbox.thisScriptID = "als_lightbox_js";
 
 // Searches for selector ('script[data-id="als_fancybox_js"], #als_fancybox_js') or similar.
-alsLightbox.thisScript = document.querySelector('script[data-id="' + alsLightbox.thisScriptID + '"], #' + alsLightbox.thisScriptID);
+alsLightbox.thisScript = document.querySelector('script[data-id="' + alsLightbox.thisScriptID + '"], #' +
+  alsLightbox.thisScriptID);
 
+// Create alsLightbox.config object. Object will eventually have four children:
+// 1 - alsLightbox.config.available: The list of available config options.
+// 2 - alsLightbox.config.paths: Paths to dependencies- jQuery, fancybox, and ALS lightbox CSS assets
+// 3 - alsLightbox.config.external: Config options from "external" json if specified. This will override any
+//     data-attributes.
+// 4 - alsLightbox.config.active: The active config options that will ultimately govern execution of the script.
 alsLightbox.config = {};
+
+// OK to be hard-coded because this is the definitive list of supported options. Set by us as the developers.
+// Note that some available options have dash-style names (not recommened in javascript) and new camelCase names.
 alsLightbox.config.available = {
 	"iframeURL": ["iframe-url","iframeURL"],
   "maxWidth": ["max-width","maxWidth"],
@@ -27,6 +41,7 @@ alsLightbox.config.available = {
 	"killSwitch": ["killSwitch"]
 };
 
+// Specify paths to dependencies.
 alsLightbox.config.paths = {
 	"jQuery": "//code.jquery.com/jquery-latest.min.js",
 	"fancybox_js": "//s3.amazonaws.com/clintonfoundation/lightbox/bower_components/fancybox/source/jquery.fancybox.pack.js",
@@ -34,7 +49,7 @@ alsLightbox.config.paths = {
 	"als_lightbox_css": "//s3.amazonaws.com/clintonfoundation/lightbox/css/als_lightbox.css"
 };
 
-// Relative paths for localhost testing.
+// Relative paths for localhost testing. Uncomment lines below.
 // alsLightbox.config.paths = {
 // 	"jQuery": "bower_components/jquery/dist/jquery.min.js",
 // 	"fancybox_js": "bower_components/fancybox/source/jquery.fancybox.pack.js",
@@ -42,9 +57,11 @@ alsLightbox.config.paths = {
 // 	"als_lightbox_css": "css/als_lightbox.css"
 // };
 
-alsLightbox.config.active = {};
+// Create objects.
 alsLightbox.config.external = {};
+alsLightbox.config.active = {};
 
+// Helper function. Determine whether a javascript object is, in fact, empty.
 function isEmpty(obj) {
   for(var prop in obj) {
     if(obj.hasOwnProperty(prop)) { return false; }
@@ -52,6 +69,9 @@ function isEmpty(obj) {
   return true;
 }
 
+// If alsLightbox.config.external is not empty, make it the active config.
+// Otherwise, cycle through the available options. If the option is specified in the data- attributes,
+// make them active.
 alsLightbox.setActiveConfig = function() {
 	if (!isEmpty(alsLightbox.config.external)) {
 		alsLightbox.config.active = alsLightbox.config.external;
@@ -65,9 +85,12 @@ alsLightbox.setActiveConfig = function() {
 	}
 };
 
+// This is the main logic of this tool. In future iterations, it probably can and should be broken up into
+// more discrete sections.
 alsLightbox.launch = function () {
 
-	if (alsLightbox.config.active.killSwitch) { return; }
+  // Allows for developers (ALS) to disable lightbox "remotely."
+  if (alsLightbox.config.active.killSwitch) { return; }
 
 	var enforceMinJQueryVersion = '1.6'; // Minimum required jQuery version.
 
@@ -102,7 +125,8 @@ alsLightbox.launch = function () {
 
 	}
 
-	function createCookieAls(name,value,days) {
+  // Function to create a browser cookie.
+  function createCookieAls(name,value,days) {
 		var expires = '';
     if (days) {
 			var date = new Date();
@@ -114,7 +138,8 @@ alsLightbox.launch = function () {
 		document.cookie = name+"="+value+expires+"; path=/";
 	}
 
-	function readCookieAls(name) {
+	// Function to read a browser cookie.
+  function readCookieAls(name) {
 		var nameEQ = name + "=";
 		var ca = document.cookie.split(';');
 		for(var i=0;i < ca.length;i++) {
@@ -125,7 +150,8 @@ alsLightbox.launch = function () {
 		return null;
 	}
 
-	// Load jQuery if not present. Technique from http://css-tricks.com/snippets/jquery/load-jquery-only-if-not-present/
+	// Load jQuery if not present.
+  // Technique from http://css-tricks.com/snippets/jquery/load-jquery-only-if-not-present/
 
 	var thisPageUsingOtherJSLibrary = false;
 
@@ -372,10 +398,15 @@ alsLightbox.launch = function () {
 
 	}
 
-};
+};    // End alsLightbox.launch
 
-alsLightbox.config.active.configFile = alsLightbox.thisScript.getAttribute('data-configFile') ? alsLightbox.thisScript.getAttribute('data-configFile') : '';
+// If this script's HTML tag element has a configFile specified, use that value as the path to the config JSON.
+// Otherwise, use empty string.
+alsLightbox.config.active.configFile = alsLightbox.thisScript.getAttribute('data-configFile') ?
+  alsLightbox.thisScript.getAttribute('data-configFile') : '';
 
+// If there's a config file specified, go get the JSON. Then use it to set the active config and launch the lightbox.
+// Otherwise, just set the active config and launch the lightbox without external config JSON.
 if (alsLightbox.config.active.configFile) {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', encodeURI(alsLightbox.config.active.configFile));
@@ -398,6 +429,10 @@ if (alsLightbox.config.active.configFile) {
 
 };
 
+// Add support for Drupal behaviors. Drupal has a weird way of handling jQuery and document ready.
+// Basically you have to register your script as a "behavior."
+// This implementation should throw an error if Drupal.behaviors doesn't exist, but try/catch means the script
+// will just move on. Either way, we run the big master namespace function.
 try {
 	Drupal.behaviors.alsLightbox = {
 	  attach: function () {
