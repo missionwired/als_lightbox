@@ -9,5 +9,5 @@
   "cookieDuration": "1",
   "supplementalCSS": "//s3.amazonaws.com/clintonfoundation/lightbox/clients/clintonfoundation/css/als_lightbox_clintonfoundation.css",
   "testMode": false,
-  "killSwitch": true
+  "killSwitch": false
 }
