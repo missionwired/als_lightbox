@@ -180,7 +180,7 @@ alsLightbox.launch = function () {
 
 	} else { // jQuery was already loaded
     // Assign existing jQuery to namespace, but do not release from global var.
-    alsLightbox.jQuery = $;
+    alsLightbox.jQuery = jQuery;
     // Now that jQuery is in the namespace, start running functions that need it.
     (function($) { load_fancybox($); })(alsLightbox.jQuery);
 	}
