@@ -44,7 +44,7 @@ alsLightbox.config.available = {
 // Specify paths to dependencies.
 alsLightbox.config.paths = {
 	"jQuery": "//code.jquery.com/jquery-latest.min.js",
-	"fancybox_js": "//s3.amazonaws.com/clintonfoundation/lightbox/bower_components/fancybox/source/jquery.fancybox.pack.js",
+	"fancybox_js": "//s3.amazonaws.com/clintonfoundation/lightbox/bower_components/fancybox/source/jquery.fancybox.pack.als.js",
 	"fancybox_css": "//s3.amazonaws.com/clintonfoundation/lightbox/bower_components/fancybox/source/jquery.fancybox.css",
 	"als_lightbox_css": "//s3.amazonaws.com/clintonfoundation/lightbox/css/als_lightbox.css"
 };
@@ -52,7 +52,7 @@ alsLightbox.config.paths = {
 // Relative paths for localhost testing. Uncomment lines below.
 // alsLightbox.config.paths = {
 // 	"jQuery": "bower_components/jquery/dist/jquery.min.js",
-// 	"fancybox_js": "bower_components/fancybox/source/jquery.fancybox.pack.js",
+// 	"fancybox_js": "bower_components/fancybox/source/jquery.fancybox.pack.als.js",
 // 	"fancybox_css": "bower_components/fancybox/source/jquery.fancybox.css",
 // 	"als_lightbox_css": "css/als_lightbox.css"
 // };
@@ -157,46 +157,36 @@ alsLightbox.launch = function () {
 
 	// Only do anything if jQuery isn't defined
 	if ( ( typeof jQuery === 'undefined' ) || ( jQuery.fn.jquery < enforceMinJQueryVersion ) ) {
-
 		if (typeof $ === 'function') {
 			// warning, global var
 			thisPageUsingOtherJSLibrary = true;
 		}
 
 		getScript(alsLightbox.config.paths.jQuery, function() {
-
 			if (typeof jQuery === 'undefined') {
-
 				// Super failsafe - still somehow failed...
-
 			} else {
-
 				// jQuery loaded! Make sure to use .noConflict just in case
+        // Assign new jQuery to namespace and release from all other uses.
+				alsLightbox.jQuery = jQuery.noConflict(true);
 
-				jQuery.noConflict();
-				(function( $ ) {
-					load_fancybox($);
-				})(jQuery);
+        // Now that jQuery is in the namespace, start running functions that need it.
+        (function($) { load_fancybox($); })(alsLightbox.jQuery);
 
-				if (thisPageUsingOtherJSLibrary) {
-
-
-				} else {
-
-
-				}
-
+        // Placeholder
+        if (thisPageUsingOtherJSLibrary) {} else {}
 			}
-
 		});
 
 	} else { // jQuery was already loaded
-
-    (function( $ ) {
-      load_fancybox($);
-    })(jQuery);
-
+    // Assign existing jQuery to namespace, but do not release from global var.
+    alsLightbox.jQuery = jQuery;
+    // Now that jQuery is in the namespace, start running functions that need it.
+    (function($) { load_fancybox($); })(alsLightbox.jQuery);
 	}
+
+
+
 
 	// Load Fancybox if not present.
 
@@ -206,18 +196,11 @@ alsLightbox.launch = function () {
 			 load_fancybox_css($);
 			 execute_fancybox($);
 		} else {
-
-			getScript(alsLightbox.config.paths.fancybox_js, function() {
-
-				if (typeof $.fancybox !== 'function') {
-					// Super failsafe - still somehow failed...
-				} else {
-					load_fancybox_css($);
-					execute_fancybox($);
-				}
-
-			});
-
+      // Use $.getScript to make sure that the current local version of $ (alsLightbox.jQuery) stays in scope.
+      $.getScript(alsLightbox.config.paths.fancybox_js, function(){
+        load_fancybox_css($);
+        execute_fancybox($);
+      });
 		}
 
 	}
@@ -268,7 +251,7 @@ alsLightbox.launch = function () {
 		// Listen to message from child window
 		eventer(messageEvent,function(e) {
 			if (e.data === 'fancybox.close') {
-				jQuery.fancybox.close();
+				$.fancybox.close();
 			}
 		},false);
 
