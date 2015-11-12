@@ -1,13 +1,13 @@
 {
   "configFile": "//s3.amazonaws.com/clintonfoundation/lightbox/clients/clintonfoundation/config.json",
-  "iframeURL": "//s3.amazonaws.com/clintonfoundation/lightbox/clients/clintonfoundation/lightbox_src/lightbox-src-2015-01-b.html",
+  "iframeURL": "//s3.amazonaws.com/clintonfoundation/lightbox/clients/clintonfoundation/lightbox_src/lightbox-src-2015-01-2.html",
   "maxWidth": "888",
   "maxHeight": "528",
-  "startDate": "November 6, 2015 05:00:00",
-  "endDate": "December 1, 2015 04:00:00",
+  "startDate": "November 9, 2015 10:00:00",
+  "endDate": "January 1, 2016 10:00:00",
   "cookieName": "als_lightbox",
   "cookieDuration": "1",
   "supplementalCSS": "//s3.amazonaws.com/clintonfoundation/lightbox/clients/clintonfoundation/css/als_lightbox_clintonfoundation.css",
-  "testMode": "1",
+  "testMode": false,
   "killSwitch": false
 }

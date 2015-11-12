@@ -45,4 +45,4 @@ Webmasters can set configurations in two ways:
 `data-cookieName`       | Cookie name to track repeat site visitors. Defaults to `als_lightbox` if nothing specified.
 `data-cookieDuration`   | Number of days after which the cookie will expire and repeat visitors will see the lightbox again. Commonly set to `1` (show no more than once per day) or `30` (show no more than once per month).
 `data-supplementalCSS`  | Path to supplemental CSS file for site-specific stying tweaks.
-`data-testMode`         | Activate test mode by setting a value of `1`. Lightbox will show on every page load. Set to `0` or remove data-attribute to disable.
+`data-testMode`         | Boolean. Activate test mode by setting a value of `true`. Lightbox will show on every page load. Set to `false` or remove data-attribute to disable.
