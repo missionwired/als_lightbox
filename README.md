@@ -10,19 +10,19 @@ Implementation for them should be simple. Just cut and paste this code snippet:
 ```html
 <!-- Add ALS Lightbox assets -->
 <script type="text/javascript"
-  src="//s3.amazonaws.com/clintonfoundation/lightbox/js/min/als_lightbox.min.js"
+  src="//s3.amazonaws.com/annelewisllc/lightbox/js/min/als_lightbox.min.js"
   id="als_lightbox_js"
   data-id="als_lightbox_js"
-  data-configFile="//s3.amazonaws.com/clintonfoundation/lightbox/clients/clintonfoundation/config.json"
-  data-iframeURL="//s3.amazonaws.com/clintonfoundation/lightbox/clients/clintonfoundation/lightbox_src/lightbox-src-2015-01-a.html"
-  data-maxWidth="888"
-  data-maxHeight="528"
-  data-startDate="November 6, 2015 05:00:00"
-  data-endDate="December 1, 2015 04:00:00"
+  data-configFile="//s3.amazonaws.com/annelewisllc/lightbox/clients/sample/config.json"
+  data-iframeURL="//s3.amazonaws.com/annelewisllc/lightbox/clients/sample/lightbox_src/index.html"
+  data-maxWidth="728"
+  data-maxHeight="400"
+  data-startDate="January 1, 2015 05:00:00"
+  data-endDate="January 1, 2020 05:00:00"
   data-cookieName="als_lightbox"
   data-cookieDuration="1"
-  data-supplementalCSS="//s3.amazonaws.com/clintonfoundation/lightbox/clients/clintonfoundation/css/als_lightbox_clintonfoundation.css"
-  data-testMode="0"
+  data-supplementalCSS="//s3.amazonaws.com/clintonfoundation/lightbox/clients/sample/css/als_lightbox_sampleclient.css"
+  data-testMode="false"
   />
 </script>
 ```   
