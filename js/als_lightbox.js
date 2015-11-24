@@ -371,7 +371,8 @@ alsLightbox.launch = function () {
 				todayDate > new Date(alsLightbox.config.active.startDate) &&
 				todayDate < new Date(alsLightbox.config.active.endDate)
 			) || (
-				alsLightbox.config.active.testMode >= 1  // Legacy support for values of 1 and 0.
+				alsLightbox.config.active.testMode >= 1 || // Legacy support for values of 1 and 0.
+        alsLightbox.config.active.testMode === 'true' // Support for string "true" in script tag's data- attributes.
 			)) {
 				$("#als_lightbox").trigger('click');
 				createCookieAls(alsLightbox.config.active.cookieName,1,alsLightbox.config.active.cookieDuration);
