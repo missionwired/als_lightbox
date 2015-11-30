@@ -39,6 +39,8 @@ jQuery(window).load(function () {
         $('#donation-form input[type="radio"]:checked').siblings('label').addClass('amount-btn-selected');
         $('#donation-form input[type="radio"]:not(:checked)').siblings('label').removeClass('amount-btn-selected');
         $('#donation-form input#vOther').prop('checked', false);
+
+        document.getElementById("donation-form").submit();
     });
 
     $('input.amount-other').on('keyup', function() {
@@ -707,7 +709,7 @@ button.lightbox-btn.lightbox-btn-mini, input.lightbox-btn.lightbox-btn-mini[type
 				<label class="amount-btn lightbox-btn lightbox-btn-large" for="v1000">$1,000</label></span><span>
                 <input type="radio" name="amount" value="2500" id="v2500">
                 <label class="amount-btn lightbox-btn lightbox-btn-large" for="v2500">$2,500</label></span><span>
-                <input type="radio" name="amount" value="1" id="none">
+                <input type="radio" name="amount" value="" id="none">
                 <label class="amount-btn lightbox-btn lightbox-btn-large" for="none" style="text-transform: none;">Other</label></span>
 			</form>
 		</div>
