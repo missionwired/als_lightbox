@@ -3051,11 +3051,31 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1
 		},
+	"\/clients\/clintonfoundation\/config_2015-12-01.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/clients\/clintonfoundation\/config_2015-12-01.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/clients\/clintonfoundation\/config_2015-12-01-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
 	"\/clients\/clintonfoundation\/css\/als_lightbox_clintonfoundation.css": {
 		"fileType": 16,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/clients\/clintonfoundation\/css\/als_lightbox_clintonfoundation.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/clients\/clintonfoundation\/index.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/clients\/clintonfoundation\/index.html",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
