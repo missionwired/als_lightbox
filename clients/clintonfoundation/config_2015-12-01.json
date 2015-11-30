@@ -2,7 +2,7 @@
   "configFile": "../../clients/clintonfoundation/config_2015-12-01.json",
   "iframeURL": "../../clients/clintonfoundation/lightbox_src/lightbox-src-2015-givingtuesday.html",
   "maxWidth": "888",
-  "maxHeight": "528",
+  "maxHeight": "526",
   "startDate": "November 9, 2015 10:00:00",
   "endDate": "January 1, 2016 10:00:00",
   "cookieName": "als_lightbox",
