@@ -3115,6 +3115,28 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/clients\/clintonfoundation\/lightbox_src\/img\/cf_givingtuesday_lightbox.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 120244,
+		"inputAbbreviatedPath": "\/clients\/clintonfoundation\/lightbox_src\/img\/cf_givingtuesday_lightbox.png",
+		"outputAbbreviatedPath": "\/clients\/clintonfoundation\/lightbox_src\/img\/cf_givingtuesday_lightbox.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/clients\/clintonfoundation\/lightbox_src\/img\/cf_givingtuesday_lightbox_mobile.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 55856,
+		"inputAbbreviatedPath": "\/clients\/clintonfoundation\/lightbox_src\/img\/cf_givingtuesday_lightbox_mobile.png",
+		"outputAbbreviatedPath": "\/clients\/clintonfoundation\/lightbox_src\/img\/cf_givingtuesday_lightbox_mobile.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/clients\/clintonfoundation\/lightbox_src\/img\/clintonbg.png": {
 		"fileType": 32768,
 		"ignore": 0,
