@@ -3040,6 +3040,17 @@
 		"outputStyle": 2,
 		"syntaxCheckerStyle": 1
 		},
+	"\/clients\/clintonfoundation\/config.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/clients\/clintonfoundation\/config.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/clients\/clintonfoundation\/config-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
 	"\/clients\/clintonfoundation\/config_2015-11-09.json": {
 		"fileType": 524288,
 		"ignore": 1,
