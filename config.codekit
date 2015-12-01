@@ -3106,7 +3106,7 @@
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 704481,
+		"initialSize": 205343,
 		"inputAbbreviatedPath": "\/clients\/clintonfoundation\/lightbox_src\/img\/2015-11-b-bg.png",
 		"outputAbbreviatedPath": "\/clients\/clintonfoundation\/lightbox_src\/img\/2015-11-b-bg.png",
 		"outputPathIsOutsideProject": 0,
@@ -3117,7 +3117,7 @@
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 70723,
+		"initialSize": 73113,
 		"inputAbbreviatedPath": "\/clients\/clintonfoundation\/lightbox_src\/img\/2015-11-b-top-mobile.png",
 		"outputAbbreviatedPath": "\/clients\/clintonfoundation\/lightbox_src\/img\/2015-11-b-top-mobile.png",
 		"outputPathIsOutsideProject": 0,
@@ -3168,6 +3168,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/clients\/clintonfoundation\/lightbox_src\/img\/lightbox_desktop_bg_2015-12-02.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 566433,
+		"inputAbbreviatedPath": "\/clients\/clintonfoundation\/lightbox_src\/img\/lightbox_desktop_bg_2015-12-02.png",
+		"outputAbbreviatedPath": "\/clients\/clintonfoundation\/lightbox_src\/img\/lightbox_desktop_bg_2015-12-02.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/clients\/clintonfoundation\/lightbox_src\/img\/Next-Button.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -3204,6 +3215,15 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/clients\/clintonfoundation\/lightbox_src\/lightbox-src-2015-01-2.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/clients\/clintonfoundation\/lightbox_src\/lightbox-src-2015-12-02.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/clients\/clintonfoundation\/lightbox_src\/lightbox-src-2015-12-02.html",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
