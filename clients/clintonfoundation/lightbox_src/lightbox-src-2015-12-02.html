@@ -607,11 +607,6 @@ button.lightbox-btn.lightbox-btn-mini, input.lightbox-btn.lightbox-btn-mini[type
     @media screen and (max-width: 800px)
     {
         body {
-            background: #0d345f;
-            background-image: url("img/2015-11-a-top-mobile.png");
-            background-repeat: no-repeat;
-            background-position: right top;
-            background-size: auto 150px;
             border-radius: 10px;
         }
 
@@ -729,10 +724,59 @@ button.lightbox-btn.lightbox-btn-mini, input.lightbox-btn.lightbox-btn-mini[type
   color: #ed481c;
   font-family: "open-sans",sans-serif;
   font-style: normal;
-  font-weight: 700;  
+  font-weight: 700;
 }
 
 @media screen and (max-width: 800px) {
+  body {
+    background: #0d345f;
+    background-image: url("img/lightbox_mobile_bg_2015-12-02.png");
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: auto 100px;
+  }
+
+  #logo {
+    position: static;
+    margin: 10px 5px 6px;
+  }
+
+  #lightbox h1 {
+    background: #8fc9ec;
+    line-height: 1.2em;
+    font-size: 20pt;
+    position: absolute;
+    top: 100px;
+    left: 0px;
+    height: 80px;
+    padding: 0.25em 1em;
+  }
+
+  #lightbox #lightbox-left {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#699cc2+0,ffffff+100 */
+    background: #699cc2; /* Old browsers */
+    background: -moz-linear-gradient(top, #699cc2 0%, #8ac3e6 75px, #ffffff 300px); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #699cc2 0%, #8ac3e6 75px, #ffffff 300px); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #699cc2 0%, #8ac3e6 75px, #ffffff 300px); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#699cc2', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+
+    position: relative;
+    top: 80px;
+    border: none;
+  }
+
+  #lightbox-left h2 {
+    font-size: 24pt;
+  }
+
+  #lightbox-left h3 {
+    font-size: 14pt;
+  }
+
+  #lightbox form {
+    margin-top: 0.5em;
+  }
+
 }
 
 

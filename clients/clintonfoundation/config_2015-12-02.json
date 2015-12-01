@@ -1,0 +1,13 @@
+{
+  "configFile": "config_2015-12-02.json",
+  "iframeURL": "lightbox_src/lightbox-src-2015-12-02.html",
+  "maxWidth": "888",
+  "maxHeight": "526",
+  "startDate": "November 9, 2015 10:00:00",
+  "endDate": "January 1, 2016 10:00:00",
+  "cookieName": "als_lightbox",
+  "cookieDuration": "1",
+  "supplementalCSS": "css/als_lightbox_clintonfoundation.css",
+  "testMode": true,
+  "killSwitch": false
+}
