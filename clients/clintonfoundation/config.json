@@ -1,6 +1,6 @@
 {
-  "configFile": "//clintonfoundation.s3.amazonaws.com/lightbox/clients/clintonfoundation/config_2015-12-01.json",
-  "iframeURL": "//clintonfoundation.s3.amazonaws.com/lightbox/clients/clintonfoundation/lightbox_src/lightbox-src-2015-givingtuesday.html",
+  "configFile": "//clintonfoundation.s3.amazonaws.com/lightbox/clients/clintonfoundation/config_2015-12-02.json",
+  "iframeURL": "//clintonfoundation.s3.amazonaws.com/lightbox/clients/clintonfoundation/lightbox_src/lightbox-src-2015-12-02.html",
   "maxWidth": "888",
   "maxHeight": "526",
   "startDate": "November 9, 2015 10:00:00",
