@@ -46,7 +46,7 @@ alsLightbox.config.paths = {
 	"jQuery": "//code.jquery.com/jquery-latest.min.js",
 	"fancybox_js": "//s3.amazonaws.com/annelewisllc/lightbox/src/bower_components/fancybox/source/jquery.fancybox.pack.als.js",
 	"fancybox_css": "//s3.amazonaws.com/annelewisllc/lightbox/src/bower_components/fancybox/source/jquery.fancybox.css",
-	"als_lightbox_css": "//s3.amazonaws.com/annelewisllc/lightbox/src/lightbox/css/als_lightbox.css"
+	"als_lightbox_css": "//s3.amazonaws.com/annelewisllc/lightbox/src/css/als_lightbox.css"
 };
 
 
