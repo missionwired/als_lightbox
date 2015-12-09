@@ -1,0 +1,35 @@
+{
+  "name": "als_lightbox",
+  "version": "2.0.0",
+  "description": "Splash pages, simplified",
+  "main": "js/min/als_lightbox.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/annelewisllc/als_lightbox.git"
+  },
+  "keywords": [
+    "als",
+    "lightbox",
+    "splash"
+  ],
+  "author": "Todd Plants",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/annelewisllc/als_lightbox/issues"
+  },
+  "homepage": "https://github.com/annelewisllc/als_lightbox#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.1",
+    "gulp-util": "^3.0.7",
+    "jshint": "^2.8.0",
+    "jshint-stylish": "^2.1.0"
+  }
+}
