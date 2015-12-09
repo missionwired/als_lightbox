@@ -46,3 +46,17 @@ Webmasters can set configurations in two ways:
 `data-cookieDuration`   | Number of days after which the cookie will expire and repeat visitors will see the lightbox again. Commonly set to `1` (show no more than once per day) or `30` (show no more than once per month).
 `data-supplementalCSS`  | Path to supplemental CSS file for site-specific stying tweaks.
 `data-testMode`         | Boolean. Activate test mode by setting a value of `true`. Lightbox will show on every page load. Set to `false` or remove data-attribute to disable.
+
+## Dev Environment Setup
+
+1. Install [Node.js](https://nodejs.org/en/download/). (once)
+
+2. Build automation is handled by [Gulp](http://gulpjs.com). Install it (once) globally:    
+
+  `npm install --global gulp`
+
+3. Navigate to the project folder (e.g `~/Git/als_lightbox/`) and install the project dependencies at the beginning of each development session:
+
+  `npm install`
+
+4. Once the proper dependencies are in place, javascript files can be minified buy running the `gulp` command. By default, this command will open a "watch" process that will lint and minify javascript files live, as they are updated.
