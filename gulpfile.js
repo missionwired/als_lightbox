@@ -6,10 +6,17 @@ var gulp   = require('gulp'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
-    sourcemaps = require('gulp-sourcemaps');
+    sourcemaps = require('gulp-sourcemaps'),
+    connect = require('gulp-connect');
 
 // define the default task and add the watch task to it
-gulp.task('default', ['watch']);
+gulp.task('default', ['watch','webserver']);
+
+gulp.task('webserver', function() {
+  connect.server({
+    livereload: true
+  });
+});
 
 // configure the jshint task
 gulp.task('jshint', function() {
@@ -27,7 +34,8 @@ gulp.task('build-js', ['jshint'], function() {
         extname: '.min.js'
       }))
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('js/min'));
+    .pipe(gulp.dest('js/min'))
+    .pipe(connect.reload());
 });
 
 // configure which files to watch and what tasks to use on file changes
