@@ -8,9 +8,7 @@
 	border-radius: 1em;
 	background: transparent;
 }
-.als_fancybox .fancybox-inner {
-    overflow: hidden !important;
-}
+
 .als_fancybox .fancybox-close {
     top: -12px;
     right: -9px;
@@ -32,7 +30,6 @@
     }
 
     .als_fancybox .fancybox-inner {
-		overflow: scroll !important; /* Allow overlay to scroll on mobile. */
 		border-radius: 10px;
 	}
 
