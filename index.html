@@ -29,32 +29,33 @@
       </header>
       <section>
         <h1>
-<a id="als_lightbox" class="anchor" href="#als_lightbox" aria-hidden="true"><span class="octicon octicon-link"></span></a>als_lightbox</h1>
+<a id="als-lightbox" class="anchor" href="#als-lightbox" aria-hidden="true"><span class="octicon octicon-link"></span></a>ALS Lightbox</h1>
 
 <p>Splash pages, simplified.</p>
 
-<h2>
-<a id="the-code-to-add-to-client-html" class="anchor" href="#the-code-to-add-to-client-html" aria-hidden="true"><span class="octicon octicon-link"></span></a>The code to add to client HTML:</h2>
+<p><a href="http://annelewisllc.s3.amazonaws.com/lightbox/src/index.html">Live demo.</a></p>
 
-<p>Implementation for them should be simple. Just cut and paste this code snippet:</p>
+<h2>
+<a id="implementation" class="anchor" href="#implementation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Implementation</h2>
+
+<p>Cut and paste this code snippet and configure accordingly:</p>
 
 <div class="highlight highlight-text-html-basic"><pre><span class="pl-c">&lt;!-- Add ALS Lightbox assets --&gt;</span>
 <span class="pl-s1">&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span></span>
-<span class="pl-s1">  <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>//s3.amazonaws.com/clintonfoundation/lightbox/js/min/als_lightbox.min.js<span class="pl-pds">"</span></span></span>
+<span class="pl-s1">  <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>//s3.amazonaws.com/annelewisllc/lightbox/src/js/min/als_lightbox.min.js<span class="pl-pds">"</span></span></span>
 <span class="pl-s1">  <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>als_lightbox_js<span class="pl-pds">"</span></span></span>
 <span class="pl-s1">  <span class="pl-e">data-id</span>=<span class="pl-s"><span class="pl-pds">"</span>als_lightbox_js<span class="pl-pds">"</span></span></span>
-<span class="pl-s1">  <span class="pl-e">data-configFile</span>=<span class="pl-s"><span class="pl-pds">"</span>//s3.amazonaws.com/clintonfoundation/lightbox/clients/clintonfoundation/config.json<span class="pl-pds">"</span></span></span>
-<span class="pl-s1">  <span class="pl-e">data-iframeURL</span>=<span class="pl-s"><span class="pl-pds">"</span>//s3.amazonaws.com/clintonfoundation/lightbox/clients/clintonfoundation/lightbox_src/lightbox-src-2015-01-a.html<span class="pl-pds">"</span></span></span>
-<span class="pl-s1">  <span class="pl-e">data-maxWidth</span>=<span class="pl-s"><span class="pl-pds">"</span>888<span class="pl-pds">"</span></span></span>
-<span class="pl-s1">  <span class="pl-e">data-maxHeight</span>=<span class="pl-s"><span class="pl-pds">"</span>528<span class="pl-pds">"</span></span></span>
-<span class="pl-s1">  <span class="pl-e">data-startDate</span>=<span class="pl-s"><span class="pl-pds">"</span>November 6, 2015 05:00:00<span class="pl-pds">"</span></span></span>
-<span class="pl-s1">  <span class="pl-e">data-endDate</span>=<span class="pl-s"><span class="pl-pds">"</span>December 1, 2015 04:00:00<span class="pl-pds">"</span></span></span>
+<span class="pl-s1">  <span class="pl-e">data-configFile</span>=<span class="pl-s"><span class="pl-pds">"</span>//s3.amazonaws.com/annelewisllc/lightbox/src/demo/config.json<span class="pl-pds">"</span></span></span>
+<span class="pl-s1">  <span class="pl-e">data-iframeURL</span>=<span class="pl-s"><span class="pl-pds">"</span>//s3.amazonaws.com/annelewisllc/lightbox/src/demo/lightbox_src/index.html<span class="pl-pds">"</span></span></span>
+<span class="pl-s1">  <span class="pl-e">data-maxWidth</span>=<span class="pl-s"><span class="pl-pds">"</span>728<span class="pl-pds">"</span></span></span>
+<span class="pl-s1">  <span class="pl-e">data-maxHeight</span>=<span class="pl-s"><span class="pl-pds">"</span>400<span class="pl-pds">"</span></span></span>
+<span class="pl-s1">  <span class="pl-e">data-startDate</span>=<span class="pl-s"><span class="pl-pds">"</span>January 1, 2015 05:00:00<span class="pl-pds">"</span></span></span>
+<span class="pl-s1">  <span class="pl-e">data-endDate</span>=<span class="pl-s"><span class="pl-pds">"</span>January 1, 2020 05:00:00<span class="pl-pds">"</span></span></span>
 <span class="pl-s1">  <span class="pl-e">data-cookieName</span>=<span class="pl-s"><span class="pl-pds">"</span>als_lightbox<span class="pl-pds">"</span></span></span>
 <span class="pl-s1">  <span class="pl-e">data-cookieDuration</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span></span>
-<span class="pl-s1">  <span class="pl-e">data-supplementalCSS</span>=<span class="pl-s"><span class="pl-pds">"</span>//s3.amazonaws.com/clintonfoundation/lightbox/clients/clintonfoundation/css/als_lightbox_clintonfoundation.css<span class="pl-pds">"</span></span></span>
-<span class="pl-s1">  <span class="pl-e">data-testMode</span>=<span class="pl-s"><span class="pl-pds">"</span>0<span class="pl-pds">"</span></span></span>
-<span class="pl-s1">  /&gt;</span>
-<span class="pl-s1">&lt;/<span class="pl-ent">script</span>&gt;</span></pre></div>
+<span class="pl-s1">  <span class="pl-e">data-supplementalCSS</span>=<span class="pl-s"><span class="pl-pds">"</span>//s3.amazonaws.com/annelewisllc/lightbox/src/demo/css/als_lightbox_sampleclient.css<span class="pl-pds">"</span></span></span>
+<span class="pl-s1">  <span class="pl-e">data-testMode</span>=<span class="pl-s"><span class="pl-pds">"</span>false<span class="pl-pds">"</span></span></span>
+<span class="pl-s1">&gt;&lt;/<span class="pl-ent">script</span>&gt;</span></pre></div>
 
 <p>Webmasters can set configurations in two ways:</p>
 
@@ -86,19 +87,19 @@
 </tr>
 <tr>
 <td><code>data-maxWidth</code></td>
-<td>The maximum width of the lightbox on desktop. In most cases this can be thought of as the "desktop width."</td>
+<td>The maximum width of the lightbox on desktop. In most cases this can be thought of as the "desktop width." Recommended: 768.</td>
 </tr>
 <tr>
 <td><code>data-maxHeight</code></td>
-<td>The maximum height of the lightbox on desktop. In most cases this can be thought of as the "desktop height.</td>
+<td>The maximum height of the lightbox on desktop. In most cases this can be thought of as the "desktop height." Recommended: 450.</td>
 </tr>
 <tr>
 <td><code>data-startDate</code></td>
-<td>Date and time to <em>start</em> showing the lightbox to visits. Javascript UTC Date() format.</td>
+<td>Date and time to <em>start</em> showing the lightbox to visitors. Javascript UTC Date() format.</td>
 </tr>
 <tr>
 <td><code>data-endDate</code></td>
-<td>Date and time to <em>stop</em> showing the lightbox to visits. Javascript UTC Date() format.</td>
+<td>Date and time to <em>stop</em> showing the lightbox to visitors. Javascript UTC Date() format.</td>
 </tr>
 <tr>
 <td><code>data-cookieName</code></td>
@@ -110,7 +111,7 @@
 </tr>
 <tr>
 <td><code>data-supplementalCSS</code></td>
-<td>Path to supplemental CSS file for site-specific stying tweaks.</td>
+<td>Path to supplemental CSS file for site-specific styling tweaks.</td>
 </tr>
 <tr>
 <td><code>data-testMode</code></td>
@@ -118,6 +119,21 @@
 </tr>
 </tbody>
 </table>
+
+<h2>
+<a id="release-notes" class="anchor" href="#release-notes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Release Notes</h2>
+
+<h3>
+<a id="v20---october---2015-12-15" class="anchor" href="#v20---october---2015-12-15" aria-hidden="true"><span class="octicon octicon-link"></span></a>v2.0 - "October" - 2015-12-15</h3>
+
+<ul>
+<li>Implemented support for config file, allowing lightbox behavior to be controlled without direct web server access.</li>
+<li>Implemented "kill switch" to disable ligtbox. Allows for immediate lightbox shutoff without client intervention when combined with remote config file.</li>
+<li>Added support for Drupal 6 behaviors</li>
+<li>Simplified and updated documentation for config parameters.</li>
+<li>Removed client-specific content from repo in preparation for public release.</li>
+<li>Implemented U2-album-themed release naming convention. Point releases are named after tracks and B-sides.</li>
+</ul>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/annelewisllc">annelewisllc</a></p>
