@@ -118,6 +118,6 @@
 }
 
 @media (min-width: 800px) {
-	/* Desktop only. */
+	/* Prevent scroll bars on large screen devices that accept touch input. */
 	.als_fancybox .fancybox-inner { overflow: hidden !important; }
 }
