@@ -116,3 +116,8 @@
     }
 
 }
+
+@media (min-width: 800px) {
+	/* Desktop only. */
+	.als_fancybox .fancybox-inner { overflow: hidden !important; }
+}
