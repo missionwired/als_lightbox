@@ -53,6 +53,9 @@
 		/* Fullscreen on iPhone 6s. */
 		max-width: 414px;
 
+		/* Full-screen iPhone 6 height in dips. */
+		max-height: 667px;
+
 		margin-left: auto;
 		margin-right: auto;
   }
