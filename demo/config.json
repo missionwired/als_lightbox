@@ -1,0 +1,13 @@
+{
+  "configFile": "demo/config.json",
+  "iframeURL": "demo/lightbox_src/index.html",
+  "maxWidth": "728",
+  "maxHeight": "400",
+  "startDate": "January 1, 2015 05:00:00",
+  "endDate": "January 1, 2020 05:00:00",
+  "cookieName": "als_lightbox",
+  "cookieDuration": "1",
+  "supplementalCSS": "demo/css/als_lightbox_sampleclient.css",
+  "testMode": true,
+  "killSwitch": false
+}

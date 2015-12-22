@@ -1,63 +1,59 @@
-als_lightbox
-============
+# ALS Lightbox
 
 Splash pages, simplified.
 
-The code to add to headers of pages:
------------
-Implementation for them should be simple. Just cut and paste this code snippet:
+[Live demo.](http://annelewisllc.s3.amazonaws.com/lightbox/src/index.html)
 
-    <!-- Add ALS fancybox assets -->
-    <script type="text/javascript"
-        src="//annelewisllc.s3.amazonaws.com/assets/splash/js/als_fancybox_launch.js"
-        data-id="als_fancybox_js"
-        data-max-width="800"
-        data-max-height="450"
-        data-iframe-url="//weta.s3.amazonaws.com/2014_spring_splash/weta-lightbox-spring-src-v1.html"
-        data-start-date="February 26, 2015 05:00:00"
-        data-end-date="March 23, 2015 04:00:00" 
-        data-cookie-name="fancybox_als4"
-        data-cookie-duration="1"
-        data-test-mode="0"
-        />
-    </script>
+## Implementation
 
-Note that the client can adjust various options if desired:
+Cut and paste this code snippet and configure accordingly:
 
-    data-id="als_fancybox_js"
+```html
+<!-- Add ALS Lightbox assets -->
+<script type="text/javascript"
+  src="//s3.amazonaws.com/annelewisllc/lightbox/src/js/min/als_lightbox.min.js"
+  id="als_lightbox_js"
+  data-id="als_lightbox_js"
+  data-configFile="//s3.amazonaws.com/annelewisllc/lightbox/src/demo/config.json"
+  data-iframeURL="//s3.amazonaws.com/annelewisllc/lightbox/src/demo/lightbox_src/index.html"
+  data-maxWidth="728"
+  data-maxHeight="400"
+  data-startDate="January 1, 2015 05:00:00"
+  data-endDate="January 1, 2020 05:00:00"
+  data-cookieName="als_lightbox"
+  data-cookieDuration="1"
+  data-supplementalCSS="//s3.amazonaws.com/annelewisllc/lightbox/src/demo/css/als_lightbox_sampleclient.css"
+  data-testMode="false"
+></script>
+```
 
-just an ID for the script element
+Webmasters can set configurations in two ways:
 
-    data-max-width="800" 
+1. Specify a config file through the `data-configFile` attribute. **Important: Setting an external config file is an all or nothing proposition. If the external file exists, it will overwrite all data- attributes.**
 
-Max width of the iframe. This is related to the dimensions of the iframe source so shouldn’t be changed on its own.
+2. Specify `data-` attributes as described below:
 
-    data-max-height="450"
+`data-` attribute       | Description
+------------------------|------------
+`data-id`               | Required. Set to `als_lightbox`.
+`data-configFile`       | Path to configuration JSON. Relative to the underlying HTML page.
+`data-iframeURL`        | Path to the html source of lightbox iframe. Relative to the underlying HTML page.
+`data-maxWidth`         | The maximum width of the lightbox on desktop. In most cases this can be thought of as the "desktop width." Recommended: 768.
+`data-maxHeight`        | The maximum height of the lightbox on desktop. In most cases this can be thought of as the "desktop height." Recommended: 450.
+`data-startDate`        | Date and time to _start_ showing the lightbox to visitors. Javascript UTC Date() format.
+`data-endDate`          | Date and time to _stop_ showing the lightbox to visitors. Javascript UTC Date() format.
+`data-cookieName`       | Cookie name to track repeat site visitors. Defaults to `als_lightbox` if nothing specified.
+`data-cookieDuration`   | Number of days after which the cookie will expire and repeat visitors will see the lightbox again. Commonly set to `1` (show no more than once per day) or `30` (show no more than once per month).
+`data-supplementalCSS`  | Path to supplemental CSS file for site-specific styling tweaks.
+`data-testMode`         | Boolean. Activate test mode by setting a value of `true`. Lightbox will show on every page load. Set to `false` or remove data-attribute to disable.
 
-Max height of the iframe. This is related to the dimensions of the iframe source so shouldn’t be changed on its own.
+## Release Notes
 
-    data-iframe-url="//weta.s3.amazonaws.com/2014_spring_splash/weta-lightbox-spring-src-v1.html”
+### v2.0 - "October" - 2015-12-15
 
-Source URL for the iframe.
-
-    data-start-date="February 26, 2015 05:00:00"
-
-Start time for the splash to be display in UTC. Currently set to the start of the day tomorrow, Feb 26
-
-    data-end-date="March 23, 2015 04:00:00" 
-
-End time for the splash to be display in UTC. Currently set to the start of the day, Mar 23
-
-    data-cookie-name="fancybox_als4"
-
-Name of cookie controlling visibility.
-
-    data-cookie-duration="1"
-
-Cookie expiration duration in days. Currently set to show new visitors the splash once each day.
-
-    data-test-mode="0"
-    
-A value of "1" here activates test mode which always shows the splash regardless of cookies or date.
-
-
+- Implemented support for config file, allowing lightbox behavior to be controlled without direct web server access.
+- Implemented "kill switch" to disable ligtbox. Allows for immediate lightbox shutoff without client intervention when combined with remote config file.
+- Added support for Drupal 6 behaviors
+- Simplified and updated documentation for config parameters.
+- Removed client-specific content from repo in preparation for public release.
+- Implemented U2-album-themed release naming convention. Point releases are named after tracks and B-sides.
