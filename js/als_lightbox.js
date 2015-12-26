@@ -28,17 +28,17 @@ alsLightbox.config = {};
 // OK to be hard-coded because this is the definitive list of supported options. Set by us as the developers.
 // Note that some available options have dash-style names (not recommened in javascript) and new camelCase names.
 alsLightbox.config.available = {
-	"iframeURL": ["iframe-url","iframeURL"],
-  "maxWidth": ["max-width","maxWidth"],
-  "maxHeight": ["max-height","maxHeight"],
-	"startDate": ["start-date","startDate"],
-	"endDate": ["end-date","endDate"],
-	"cookieName": ["cookie-name","cookieName"],
-	"cookieDuration": ["cookie-duration","cookieDuration"],
-	"configFile": ["configFile"],
-	"supplementalCSS": ["supplementalCSS"],
-	"testMode": ["test-mode","testMode"],
-	"killSwitch": ["killSwitch"]
+	"iframeURL": ["iframe-url","iframeURL","iframeurl"],
+  "maxWidth": ["max-width","maxWidth","maxwidth"],
+  "maxHeight": ["max-height","maxHeight","maxheight"],
+	"startDate": ["start-date","startDate","startdate"],
+	"endDate": ["end-date","endDate","enddate"],
+	"cookieName": ["cookie-name","cookieName","cookiename"],
+	"cookieDuration": ["cookie-duration","cookieDuration","cookieduration"],
+	"configFile": ["configFile","configfile"],
+	"supplementalCSS": ["supplementalCSS","supplementalcss"],
+	"testMode": ["test-mode","testMode","testmode"],
+	"killSwitch": ["killSwitch","killswitch"]
 };
 
 // Specify paths to dependencies.
