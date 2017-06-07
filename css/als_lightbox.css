@@ -21,10 +21,13 @@
 	display: none;
 }
 
+@media (max-width: 800px) and (orientation: landscape) {
+    position: fixed !important; /* Prevent body from scrolling behind overlay. http://stackoverflow.com/a/19015970 */
+}
+
 @media (max-width: 800px) {
 
   .fancybox-lock body {
-  	position: fixed !important; /* Prevent body from scrolling behind overlay. http://stackoverflow.com/a/19015970 */
   	margin: 0;
   }
 
