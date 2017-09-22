@@ -2,7 +2,7 @@
 
 Splash pages, simplified.
 
-[Live demo.](http://annelewisllc.s3.amazonaws.com/lightbox/src/index.html)
+[Live demo.](https://annelewisllc.s3.amazonaws.com/lightbox/src/index.html)
 
 ## Implementation
 
@@ -11,18 +11,18 @@ Cut and paste this code snippet and configure accordingly:
 ```html
 <!-- Add ALS Lightbox assets -->
 <script type="text/javascript"
-  src="//s3.amazonaws.com/annelewisllc/lightbox/src/js/min/als_lightbox.min.js"
+  src="https://s3.amazonaws.com/annelewisllc/lightbox/src/js/min/als_lightbox.min.js"
   id="als_lightbox_js"
   data-id="als_lightbox_js"
-  data-configFile="//s3.amazonaws.com/annelewisllc/lightbox/src/demo/config.json"
-  data-iframeURL="//s3.amazonaws.com/annelewisllc/lightbox/src/demo/lightbox_src/index.html"
+  data-configFile="https://s3.amazonaws.com/annelewisllc/lightbox/src/demo/config.json"
+  data-iframeURL="https://s3.amazonaws.com/annelewisllc/lightbox/src/demo/lightbox_src/index.html"
   data-maxWidth="728"
   data-maxHeight="400"
   data-startDate="January 1, 2015 05:00:00"
   data-endDate="January 1, 2020 05:00:00"
   data-cookieName="als_lightbox"
   data-cookieDuration="1"
-  data-supplementalCSS="//s3.amazonaws.com/annelewisllc/lightbox/src/demo/css/als_lightbox_sampleclient.css"
+  data-supplementalCSS="https://s3.amazonaws.com/annelewisllc/lightbox/src/demo/css/als_lightbox_sampleclient.css"
   data-testMode="false"
 ></script>
 ```
