@@ -43,10 +43,10 @@ alsLightbox.config.available = {
 
 // Specify paths to dependencies.
 alsLightbox.config.paths = {
-	"jQuery": "//code.jquery.com/jquery-latest.min.js",
-	"fancybox_js": "//s3.amazonaws.com/annelewisllc/lightbox/src/bower_components/fancybox/source/jquery.fancybox.pack.als.js",
-	"fancybox_css": "//s3.amazonaws.com/annelewisllc/lightbox/src/bower_components/fancybox/source/jquery.fancybox.css",
-	"als_lightbox_css": "//s3.amazonaws.com/annelewisllc/lightbox/src/css/als_lightbox.css"
+	"jQuery": "https://code.jquery.com/jquery-latest.min.js",
+	"fancybox_js": "https://s3.amazonaws.com/annelewisllc/lightbox/src/bower_components/fancybox/source/jquery.fancybox.pack.als.js",
+	"fancybox_css": "https://s3.amazonaws.com/annelewisllc/lightbox/src/bower_components/fancybox/source/jquery.fancybox.css",
+	"als_lightbox_css": "https://s3.amazonaws.com/annelewisllc/lightbox/src/css/als_lightbox.css"
 };
 
 
