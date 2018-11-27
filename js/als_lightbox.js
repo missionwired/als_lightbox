@@ -96,8 +96,14 @@ alsLightbox.launch = function () {
   if (alsLightbox.config.active.killSwitch) { return; }
 
 	// Regex to check for blacklisted URL parameters
-	if ((alsLightbox.config.active.blacklist).length > 0) {  
-		var blacklistArray = new RegExp((alsLightbox.config.active.blacklist).join("|"), 'i');
+	var blacklistArray = alsLightbox.config.active.blacklist;
+	if (blacklistArray.length > 0) {  
+		var tempArray = [];
+		for (i=0; i < blacklistArray.length; i++) {
+			tempArray.push("(" + blacklistArray[i] + ")");
+		}
+		blacklistArray = new RegExp((tempArray).join("|"), 'i');
+		console.log(blacklistArray);
 		if (window.location.href.match(blacklistArray) !== null) { return; }
 	}
 
