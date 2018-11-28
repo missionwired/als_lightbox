@@ -99,7 +99,6 @@ alsLightbox.launch = function () {
 	var blacklistArray = alsLightbox.config.active.blacklist;
 	if (blacklistArray.length > 0) {  
 		blacklistArray = new RegExp("(" + blacklistArray.join(")|(") + ")", 'i');
-		console.log(blacklistArray);
 		if (window.location.href.match(blacklistArray) !== null) { return; }
 	}
 
