@@ -103,7 +103,6 @@ alsLightbox.launch = function () {
 			tempArray.push("(" + blacklistArray[i] + ")");
 		}
 		blacklistArray = new RegExp((tempArray).join("|"), 'i');
-		console.log(blacklistArray);
 		if (window.location.href.match(blacklistArray) !== null) { return; }
 	}
 
