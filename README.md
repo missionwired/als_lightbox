@@ -4,6 +4,12 @@ Splash pages, simplified.
 
 [Live demo.](https://annelewisllc.s3.amazonaws.com/lightbox/src/index.html)
 
+## Minification
+
+You can minify your javascript with the following script from the `/js/` directory. (Note, you need UglifyJS installed. You can install globally with `npm install uglify-js -g`)
+
+`uglifyjs ./als_lightbox.js -o min/als_lightbox.min.js -c -m --source-map "root='../',url='als_lightbox.min.js.map'"`
+
 ## Implementation
 
 **Note that the below configurations are outdated and these settings are all set by each project's config JSON file**
