@@ -98,11 +98,8 @@ alsLightbox.launch = function () {
 	// Regex to check for blacklisted URL parameters
 	var blacklistArray = alsLightbox.config.active.blacklist;
 	if (blacklistArray.length > 0) {  
-		var tempArray = [];
-		for (i=0; i < blacklistArray.length; i++) {
-			tempArray.push("(" + blacklistArray[i] + ")");
-		}
-		blacklistArray = new RegExp((tempArray).join("|"), 'i');
+		blacklistArray = new RegExp("(" + blacklistArray.join(")|(") + ")", 'i');
+		console.log(blacklistArray);
 		if (window.location.href.match(blacklistArray) !== null) { return; }
 	}
 
