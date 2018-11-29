@@ -38,7 +38,8 @@ alsLightbox.config.available = {
 	"configFile": ["configFile"],
 	"supplementalCSS": ["supplementalCSS"],
 	"testMode": ["test-mode","testMode"],
-	"killSwitch": ["killSwitch"]
+	"killSwitch": ["killSwitch"],
+	"blacklist": ["blacklist"]
 };
 
 // Specify paths to dependencies.
@@ -93,6 +94,13 @@ alsLightbox.launch = function () {
 
   // Allows for developers (ALS) to disable lightbox "remotely."
   if (alsLightbox.config.active.killSwitch) { return; }
+
+	// Regex to check for blacklisted URL parameters
+	var blacklistArray = alsLightbox.config.active.blacklist;
+	if (blacklistArray && blacklistArray.length > 0) {  
+		blacklistArray = new RegExp("(" + blacklistArray.join(")|(") + ")", 'i');
+		if (window.location.href.match(blacklistArray) !== null) { return; }
+	}
 
 	var enforceMinJQueryVersion = '1.6'; // Minimum required jQuery version.
 
@@ -374,7 +382,7 @@ alsLightbox.launch = function () {
 				todayDate < new Date(alsLightbox.config.active.endDate)
 			) || (
 				alsLightbox.config.active.testMode >= 1 || // Legacy support for values of 1 and 0.
-        alsLightbox.config.active.testMode === 'true' // Support for string "true" in script tag's data- attributes.
+        		alsLightbox.config.active.testMode === 'true' // Support for string "true" in script tag's data- attributes.
 			)) {
 				$("#als_lightbox").trigger('click');
 				createCookieAls(alsLightbox.config.active.cookieName,1,alsLightbox.config.active.cookieDuration);

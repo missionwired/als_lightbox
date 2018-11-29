@@ -4,7 +4,15 @@ Splash pages, simplified.
 
 [Live demo.](https://annelewisllc.s3.amazonaws.com/lightbox/src/index.html)
 
+## Minification
+
+You can minify your javascript with the following script from the `/js/` directory. (Note, you need UglifyJS installed. You can install globally with `npm install uglify-js -g`)
+
+`uglifyjs ./als_lightbox.js -o min/als_lightbox.min.js -c -m --source-map "root='../',url='als_lightbox.min.js.map'"`
+
 ## Implementation
+
+**Note that the below configurations are outdated and these settings are all set by each project's config JSON file**
 
 Cut and paste this code snippet and configure accordingly:
 
@@ -48,6 +56,9 @@ Webmasters can set configurations in two ways:
 `data-testMode`         | Boolean. Activate test mode by setting a value of `true`. Lightbox will show on every page load. Set to `false` or remove data-attribute to disable.
 
 ## Release Notes
+
+### v2.1 - "Where Did It All Go Wrong?" - 2018-11-28
+- Implemented a blacklist filter to allow us to list URLs with a string to prevent the lightbox from displaying (i.e. prevent the lightbox from displaying on the privacy page with "privacy" in the URL)
 
 ### v2.0 - "October" - 2015-12-15
 
