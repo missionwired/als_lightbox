@@ -57,6 +57,10 @@ Webmasters can set configurations in two ways:
 
 ## Release Notes
 
+### v2.2 - "How to Dismantle An Atomic Bomb" - 2021-12-17
+- Change every reference of `fancybox` to `fancybox2` so the fancybox library does not interfere with the one used on the SHP site.
+- So far, this is only to be deployed on the SHP site. We should test this rigorously before completely replacing it.
+
 ### v2.1 - "Where Did It All Go Wrong?" - 2018-11-28
 - Implemented a blacklist filter to allow us to list URLs with a string to prevent the lightbox from displaying (i.e. prevent the lightbox from displaying on the privacy page with "privacy" in the URL)
 
