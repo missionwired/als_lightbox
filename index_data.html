@@ -52,20 +52,40 @@
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript"
-        src="js/min/als_lightbox.min.js"
+    <!-- For testing locally (so you don't have to minify everytime you make changes) -->
+    <!-- <script type="text/javascript"
+        src="js/als_lightbox.js"
         id="als_lightbox_js"
         data-id="als_lightbox_js"
         data-iframeURL="demo/lightbox_src/index.html"
         data-maxWidth="728"
         data-maxHeight="400"
         data-startDate="January 1, 2015 05:00:00"
-        data-endDate="January 1, 2020 05:00:00"
+        data-endDate="January 1, 2026 05:00:00"
         data-cookieName="als_lightbox"
         data-cookieDuration="1"
         data-supplementalCSS="demo/css/als_lightbox_sampleclient.css"
-        data-testMode="true"
+        data-testMode="false"
+        data-exitIntent="false"
         >
+    </script> -->
+
+    <!-- For deployment, comment out when testing locally -->
+    <script type="text/javascript"
+      src="js/min/als_lightbox.min.js"
+      id="als_lightbox_js"
+      data-id="als_lightbox_js"
+      data-iframeURL="demo/lightbox_src/index.html"
+      data-maxWidth="728"
+      data-maxHeight="400"
+      data-startDate="January 1, 2015 05:00:00"
+      data-endDate="January 1, 2026 05:00:00"
+      data-cookieName="als_lightbox"
+      data-cookieDuration="1"
+      data-supplementalCSS="demo/css/als_lightbox_sampleclient.css"
+      data-testMode="false"
+      data-exitIntent="false"
+      >
     </script>
 
   </body>

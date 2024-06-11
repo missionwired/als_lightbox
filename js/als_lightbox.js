@@ -39,7 +39,8 @@ alsLightbox.config.available = {
 	"supplementalCSS": ["supplementalCSS"],
 	"testMode": ["test-mode","testMode"],
 	"killSwitch": ["killSwitch"],
-	"blacklist": ["blacklist"]
+	"blacklist": ["blacklist"],
+	"exitIntent": ["exitIntent"]
 };
 
 // Specify paths to dependencies.
@@ -319,9 +320,50 @@ alsLightbox.launch = function () {
 			return url;
 		}
 
+		// helper function for mobile exitIntent functionality
+		function myScrollSpeedFunction(){
+			if ($('body').hasClass('on-mobile-device') && !$('body').hasClass('on-mobile-device-triggered')) { 
+				if(my_scroll() < -150){
+					$("#als_lightbox").trigger('click');
+					createCookieAls(alsLightbox.config.active.cookieName,1,alsLightbox.config.active.cookieDuration);
+					$('body').removeClass('on-mobile-device');
+					$("body").addClass('on-mobile-device-triggered')
+				}
+			}
+		}
+		
+		// helper function for mobile exitIntent functionality
+		var my_scroll = (function() { //Function that checks the speed of scrolling
+			var last_position, new_position, timer, delta, delay = 50; 
+			function clear() {
+				last_position = null;
+				delta = 0;
+			}
+	
+			clear();
+			return function() {
+				new_position = window.scrollY;
+				if ( last_position != null ){
+					delta = new_position -  last_position;
+				}
+				last_position = new_position;
+				clearTimeout(timer);
+				timer = setTimeout(clear, delay);
+				return delta;
+			};
+		})();
+
 		$(document).ready(function( $ ) {
 
 			$('body').prepend('<div id="als_lightbox" style="display:none;"></div>');
+			// check if we are on mobile device and add class to body accordingly.
+			$(document).on('touchstart', function() {
+				if (readCookieAls(alsLightbox.config.active.cookieName)) {
+					$("body").addClass('on-mobile-device-triggered'); // if cookie is set, add class to body to prevent lightbox from showing on mobile devices.
+				} else {
+					$("body").addClass('on-mobile-device'); // if cookie is not set, add class to body to show lightbox on mobile devices.
+				}
+		  });
 
 			var todayDate = new Date();
 
@@ -337,6 +379,9 @@ alsLightbox.launch = function () {
 			}
 			if(!alsLightbox.config.active.endDate) {
 				alsLightbox.config.active.endDate = "January 1, 2038 00:00:00";
+			}
+			if(!alsLightbox.config.active.exitIntent) {
+				alsLightbox.config.active.exitIntent = false;
 			}
 
 			$("#als_lightbox").fancybox({
@@ -384,14 +429,20 @@ alsLightbox.launch = function () {
 				alsLightbox.config.active.testMode >= 1 || // Legacy support for values of 1 and 0.
         		alsLightbox.config.active.testMode === 'true' // Support for string "true" in script tag's data- attributes.
 			)) {
-				$("#als_lightbox").trigger('click');
-				createCookieAls(alsLightbox.config.active.cookieName,1,alsLightbox.config.active.cookieDuration);
+				// Exit intent functionality.				
+				if (alsLightbox.config.active.exitIntent) {
+					$(document).on('scroll', myScrollSpeedFunction ); // if on mobile, show lightbox when user scrolls up quickly
+					$(document).one("mouseleave", function() { // show lightbox the first time the mouse leaves the browser window
+						$("#als_lightbox").trigger('click');
+						createCookieAls(alsLightbox.config.active.cookieName,1,alsLightbox.config.active.cookieDuration);
+					});
+				} else {
+					$("#als_lightbox").trigger('click'); // show lightbox immediately
+					createCookieAls(alsLightbox.config.active.cookieName,1,alsLightbox.config.active.cookieDuration);
+				}
 			}
-
 		});
-
 	}
-
 };    // End alsLightbox.launch
 
 // If this script's HTML tag element has a configFile specified, use that value as the path to the config JSON.

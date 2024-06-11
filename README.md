@@ -4,10 +4,32 @@ Splash pages, simplified.
 
 [Live demo.](https://annelewisllc.s3.amazonaws.com/lightbox/src/index.html)
 
+## Local development
+
+1. In order to develop on and test changes to this repo locally, you will need to have `php` installed. To check if you have php installed already, run `php -v` in your terminal - this should either throw an error, or give you a version number. If you get an error, please install php for mac through brew. I followed the top comment in [this thread](https://stackoverflow.com/questions/69786222/zsh-command-not-found-php).
+
+2. Once you have php installed, go into `index.html` and `index_data.html` and switch the scripts that the files are using from the deployment script to the local development script. The only difference here is that we will not use the minified version of the `js` files, this will make development faster.
+
+3. We will also need to go into `js/als_lightbox.js` and `js/als_lightbox_v2.2.js` and switch the `alsLightbox.config.paths` to the object for local development. IMPORTANT! Do not deploy changes for this repo without changing this back! There are live lightboxes using this code, and we don't want to break them. 
+
+4. Once all of this is done, you can run `php -S localhost:8080` to start a local php server. Navigate to `localhost:8080/index.html` to see the demo page and any changes you make will be reflected here after a refresh. 
+
+5. Once you are happy with your changes, you will want to have someone test them. You can create a staging minification using the code below under Minification.
+
+6. Deploy the changes to AWS using the command in `deploy.sh`. These files can now be referenced in the `als_lightbox_content` repo for testing. 
+
+7. Repeat steps 5 and 6 but use the minification step to overwrite the production minification files that already exist for the version you are updating (`als_lightbox.min.js` and `als_lightbox_shp.min.js`)
+
 ## Minification
 
 You can minify your javascript with the following script from the `/js/` directory. (Note, you need UglifyJS installed. You can install globally with `npm install uglify-js -g`)
 
+`uglifyjs PATH_TO_FILE_TO_MINIFY -o min/MINIFIED_FILE_NAME.min.js -c -m --source-map "root='../',url='MINIFIED_FILE_NAME.min.js.map'"`
+
+For example, to minify the `als_lightbox.js` file to a staging version, the script would look like this: 
+`uglifyjs ./als_lightbox.js -o min/als_lightbox_staging.min.js -c -m --source-map "root='../',url='als_lightbox_staging.min.js.map'"`
+
+To deploy that same file to production after testing/approval, we will overwrite the current minified version with this:
 `uglifyjs ./als_lightbox.js -o min/als_lightbox.min.js -c -m --source-map "root='../',url='als_lightbox.min.js.map'"`
 
 ## Implementation
@@ -32,6 +54,7 @@ Cut and paste this code snippet and configure accordingly:
   data-cookieDuration="1"
   data-supplementalCSS="https://s3.amazonaws.com/annelewisllc/lightbox/src/demo/css/als_lightbox_sampleclient.css"
   data-testMode="false"
+  data-exitIntent="false"
 ></script>
 ```
 
@@ -54,6 +77,7 @@ Webmasters can set configurations in two ways:
 `data-cookieDuration`   | Number of days after which the cookie will expire and repeat visitors will see the lightbox again. Commonly set to `1` (show no more than once per day) or `30` (show no more than once per month).
 `data-supplementalCSS`  | Path to supplemental CSS file for site-specific styling tweaks.
 `data-testMode`         | Boolean. Activate test mode by setting a value of `true`. Lightbox will show on every page load. Set to `false` or remove data-attribute to disable.
+`data-exitIntent`       | Boolean. Activate the exitIntent lightbox by setting this to true, it will override the default lighthouse functionality and trigger a pop-up when we detect  that the user is leaving the website. 
 
 ## Release Notes
 
