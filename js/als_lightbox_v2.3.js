@@ -11,7 +11,7 @@ var alsLightboxFancybox3 = function () {
 
     // Expected ID attribute of the script tag calling this script.
     // TODO Graceful failure if script tag is not identified correctly.
-    alsLightboxFancybox3.thisScriptID = "als_lightbox_js";
+    alsLightboxFancybox3.thisScriptID = "als_lightbox_fancybox3_js";
 
     // Searches for selector ('script[data-id="als_fancybox3_js"], #als_fancybox3_js') or similar.
     alsLightboxFancybox3.thisScript = document.querySelector('script[data-id="' + alsLightboxFancybox3.thisScriptID + '"], #' +
@@ -324,7 +324,7 @@ var alsLightboxFancybox3 = function () {
             function myScrollSpeedFunction() {
                 if ($('body').hasClass('on-mobile-device') && !$('body').hasClass('on-mobile-device-triggered')) {
                     if (my_scroll() < -150) {
-                        $("#als_lightbox").trigger('click');
+                        $("#als_lightbox_fancybox3").trigger('click');
                         createCookieAls(alsLightboxFancybox3.config.active.cookieName, 1, alsLightboxFancybox3.config.active.cookieDuration);
                         $('body').removeClass('on-mobile-device');
                         $("body").addClass('on-mobile-device-triggered')
@@ -355,7 +355,7 @@ var alsLightboxFancybox3 = function () {
 
             $(document).ready(function ($) {
 
-                $('body').prepend('<div id="als_lightbox" style="display:none;"></div>');
+                $('body').prepend('<div id="als_lightbox_fancybox3" style="display:none;"></div>');
                 // check if we are on mobile device and add class to body accordingly.
                 $(document).on('touchstart', function () {
                     if (readCookieAls(alsLightboxFancybox3.config.active.cookieName)) {
@@ -369,6 +369,7 @@ var alsLightboxFancybox3 = function () {
 
                 //defaults
                 console.log('alsLightboxFancybox3.config.active.cookieName', alsLightboxFancybox3.config.active.cookieName);
+
                 if (!alsLightboxFancybox3.config.active.cookieName) {
                     alsLightboxFancybox3.config.active.cookieName = "als_lightbox";
                 }
@@ -385,7 +386,7 @@ var alsLightboxFancybox3 = function () {
                     alsLightboxFancybox3.config.active.exitIntent = false;
                 }
 
-                $("#als_lightbox").fancybox3({
+                $("#als_lightbox_fancybox3").fancybox3({
                     openEffect: 'fade',
                     closeEffect: 'fade',
                     openSpeed: 500,
@@ -433,11 +434,11 @@ var alsLightboxFancybox3 = function () {
                     if (alsLightboxFancybox3.config.active.exitIntent) {
                         $(document).on('scroll', myScrollSpeedFunction); // if on mobile, show lightbox when user scrolls up quickly
                         $(document).one("mouseleave", function () { // show lightbox the first time the mouse leaves the browser window
-                            $("#als_lightbox").trigger('click');
+                            $("#als_lightbox_fancybox3").trigger('click');
                             createCookieAls(alsLightboxFancybox3.config.active.cookieName, 1, alsLightboxFancybox3.config.active.cookieDuration);
                         });
                     } else {
-                        $("#als_lightbox").trigger('click'); // show lightbox immediately
+                        $("#als_lightbox_fancybox3").trigger('click'); // show lightbox immediately
                         createCookieAls(alsLightboxFancybox3.config.active.cookieName, 1, alsLightboxFancybox3.config.active.cookieDuration);
                     }
                 }
