@@ -83,6 +83,7 @@ Webmasters can set configurations in two ways:
 
 ### v2.3 - "SHP needs another fancybox version because of conflicts" - 2024-11-26
 - Create new reference of `fancybox` to `fancybox3` so the fancybox library does not interfere with the ones used on the SHP site.
+- Update the `alsLightboxFancybox3.thisScriptID` value to be unique to fancybox3.
 - So far, this is only to be deployed on the SHP site. We should test this rigorously before completely replacing it.
 
 ### v2.2 - "How to Dismantle An Atomic Bomb" - 2021-12-17
