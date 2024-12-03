@@ -7,27 +7,27 @@
 
 // Create a global namespace for ALS Lightbox assets. All properties and helper functions flow from there.
 
-var alsLightbox = function () {
+var alsLightboxFancybox3 = function () {
 
     // Expected ID attribute of the script tag calling this script.
     // TODO Graceful failure if script tag is not identified correctly.
-    alsLightbox.thisScriptID = "als_lightbox_js";
+    alsLightboxFancybox3.thisScriptID = "als_lightbox_js";
 
     // Searches for selector ('script[data-id="als_fancybox3_js"], #als_fancybox3_js') or similar.
-    alsLightbox.thisScript = document.querySelector('script[data-id="' + alsLightbox.thisScriptID + '"], #' +
-        alsLightbox.thisScriptID);
+    alsLightboxFancybox3.thisScript = document.querySelector('script[data-id="' + alsLightboxFancybox3.thisScriptID + '"], #' +
+        alsLightboxFancybox3.thisScriptID);
 
-    // Create alsLightbox.config object. Object will eventually have four children:
-    // 1 - alsLightbox.config.available: The list of available config options.
-    // 2 - alsLightbox.config.paths: Paths to dependencies- jQuery, fancybox3, and ALS lightbox CSS assets
-    // 3 - alsLightbox.config.external: Config options from "external" json if specified. This will override any
+    // Create alsLightboxFancybox3.config object. Object will eventually have four children:
+    // 1 - alsLightboxFancybox3.config.available: The list of available config options.
+    // 2 - alsLightboxFancybox3.config.paths: Paths to dependencies- jQuery, fancybox3, and ALS lightbox CSS assets
+    // 3 - alsLightboxFancybox3.config.external: Config options from "external" json if specified. This will override any
     //     data-attributes.
-    // 4 - alsLightbox.config.active: The active config options that will ultimately govern execution of the script.
-    alsLightbox.config = {};
+    // 4 - alsLightboxFancybox3.config.active: The active config options that will ultimately govern execution of the script.
+    alsLightboxFancybox3.config = {};
 
     // OK to be hard-coded because this is the definitive list of supported options. Set by us as the developers.
     // Note that some available options have dash-style names (not recommened in javascript) and new camelCase names.
-    alsLightbox.config.available = {
+    alsLightboxFancybox3.config.available = {
         "iframeURL": ["iframe-url", "iframeURL"],
         "maxWidth": ["max-width", "maxWidth"],
         "maxHeight": ["max-height", "maxHeight"],
@@ -44,7 +44,7 @@ var alsLightbox = function () {
     };
 
     // Specify paths to dependencies.
-    alsLightbox.config.paths = {
+    alsLightboxFancybox3.config.paths = {
         "jQuery": "https://code.jquery.com/jquery-latest.min.js",
         "fancybox3_js": "https://s3.amazonaws.com/annelewisllc/lightbox/src/bower_components/fancybox/source/jquery.fancybox3.als.js",
         "fancybox3_css": "https://s3.amazonaws.com/annelewisllc/lightbox/src/bower_components/fancybox/source/jquery.fancybox3.css",
@@ -54,7 +54,7 @@ var alsLightbox = function () {
 
 
     // Relative paths for localhost testing. Uncomment lines below.
-    // alsLightbox.config.paths = {
+    // alsLightboxFancybox3.config.paths = {
     // 	"jQuery": "bower_components/jquery/dist/jquery.min.js",
     // 	"fancybox3_js": "bower_components/fancybox/source/jquery.fancybox3.als.js",
     // 	"fancybox3_css": "bower_components/fancybox/source/jquery.fancybox3.css",
@@ -62,8 +62,8 @@ var alsLightbox = function () {
     // };
 
     // Create objects.
-    alsLightbox.config.external = {};
-    alsLightbox.config.active = {};
+    alsLightboxFancybox3.config.external = {};
+    alsLightboxFancybox3.config.active = {};
 
     // Helper function. Determine whether a javascript object is, in fact, empty.
     function isEmpty(obj) {
@@ -73,17 +73,17 @@ var alsLightbox = function () {
         return true;
     }
 
-    // If alsLightbox.config.external is not empty, make it the active config.
+    // If alsLightboxFancybox3.config.external is not empty, make it the active config.
     // Otherwise, cycle through the available options. If the option is specified in the data- attributes,
     // make them active.
-    alsLightbox.setActiveConfig = function () {
-        if (!isEmpty(alsLightbox.config.external)) {
-            alsLightbox.config.active = alsLightbox.config.external;
+    alsLightboxFancybox3.setActiveConfig = function () {
+        if (!isEmpty(alsLightboxFancybox3.config.external)) {
+            alsLightboxFancybox3.config.active = alsLightboxFancybox3.config.external;
         } else {
-            for (var setting in alsLightbox.config.available) {
-                for (var index = 0; index < alsLightbox.config.available[setting].length; index++) {
-                    alsLightbox.config.active[setting] = alsLightbox.thisScript.getAttribute('data-' + alsLightbox.config.available[setting][index]);
-                    if (alsLightbox.config.active[setting]) { break; }
+            for (var setting in alsLightboxFancybox3.config.available) {
+                for (var index = 0; index < alsLightboxFancybox3.config.available[setting].length; index++) {
+                    alsLightboxFancybox3.config.active[setting] = alsLightboxFancybox3.thisScript.getAttribute('data-' + alsLightboxFancybox3.config.available[setting][index]);
+                    if (alsLightboxFancybox3.config.active[setting]) { break; }
                 }
             }
         }
@@ -91,13 +91,13 @@ var alsLightbox = function () {
 
     // This is the main logic of this tool. In future iterations, it probably can and should be broken up into
     // more discrete sections.
-    alsLightbox.launch = function () {
+    alsLightboxFancybox3.launch = function () {
 
         // Allows for developers (ALS) to disable lightbox "remotely."
-        if (alsLightbox.config.active.killSwitch) { return; }
+        if (alsLightboxFancybox3.config.active.killSwitch) { return; }
 
         // Regex to check for blacklisted URL parameters
-        var blacklistArray = alsLightbox.config.active.blacklist;
+        var blacklistArray = alsLightboxFancybox3.config.active.blacklist;
         if (blacklistArray && blacklistArray.length > 0) {
             blacklistArray = new RegExp("(" + blacklistArray.join(")|(") + ")", 'i');
             if (window.location.href.match(blacklistArray) !== null) { return; }
@@ -173,16 +173,16 @@ var alsLightbox = function () {
                 thisPageUsingOtherJSLibrary = true;
             }
 
-            getScript(alsLightbox.config.paths.jQuery, function () {
+            getScript(alsLightboxFancybox3.config.paths.jQuery, function () {
                 if (typeof jQuery === 'undefined') {
                     // Super failsafe - still somehow failed...
                 } else {
                     // jQuery loaded! Make sure to use .noConflict just in case
                     // Assign new jQuery to namespace and release from all other uses.
-                    alsLightbox.jQuery = jQuery.noConflict(true);
+                    alsLightboxFancybox3.jQuery = jQuery.noConflict(true);
 
                     // Now that jQuery is in the namespace, start running functions that need it.
-                    (function ($) { load_fancybox3($); })(alsLightbox.jQuery);
+                    (function ($) { load_fancybox3($); })(alsLightboxFancybox3.jQuery);
 
                     // Placeholder
                     if (thisPageUsingOtherJSLibrary) { } else { }
@@ -191,9 +191,9 @@ var alsLightbox = function () {
 
         } else { // jQuery was already loaded
             // Assign existing jQuery to namespace, but do not release from global var.
-            alsLightbox.jQuery = jQuery;
+            alsLightboxFancybox3.jQuery = jQuery;
             // Now that jQuery is in the namespace, start running functions that need it.
-            (function ($) { load_fancybox3($); })(alsLightbox.jQuery);
+            (function ($) { load_fancybox3($); })(alsLightboxFancybox3.jQuery);
         }
 
 
@@ -207,8 +207,8 @@ var alsLightbox = function () {
                 load_fancybox3_css($);
                 execute_fancybox3($);
             } else {
-                // Use $.getScript to make sure that the current local version of $ (alsLightbox.jQuery) stays in scope.
-                $.getScript(alsLightbox.config.paths.fancybox3_js, function () {
+                // Use $.getScript to make sure that the current local version of $ (alsLightboxFancybox3.jQuery) stays in scope.
+                $.getScript(alsLightboxFancybox3.config.paths.fancybox3_js, function () {
                     load_fancybox3_css($);
                     execute_fancybox3($);
                 });
@@ -224,7 +224,7 @@ var alsLightbox = function () {
                 fancybox3_base_style_tag.rel = 'stylesheet';
                 fancybox3_base_style_tag.type = 'text/css';
                 fancybox3_base_style_tag.media = 'screen';
-                fancybox3_base_style_tag.href = alsLightbox.config.paths.fancybox3_css;
+                fancybox3_base_style_tag.href = alsLightboxFancybox3.config.paths.fancybox3_css;
                 fancybox3_base_style_tag.id = 'als_fancybox3_base_style_tag';
                 document.getElementsByTagName('head')[0].appendChild(fancybox3_base_style_tag);
             }
@@ -239,16 +239,16 @@ var alsLightbox = function () {
             als_style_tag.rel = 'stylesheet';
             als_style_tag.type = 'text/css';
             als_style_tag.media = 'all';
-            als_style_tag.href = alsLightbox.config.paths.als_lightbox_css;
+            als_style_tag.href = alsLightboxFancybox3.config.paths.als_lightbox_css;
             document.getElementsByTagName('head')[0].appendChild(als_style_tag);
 
             // Add site-specific supplemental CSS if one exists.
-            if (alsLightbox.config.active.supplementalCSS) {
+            if (alsLightboxFancybox3.config.active.supplementalCSS) {
                 var alsSupplementalCSSTag = document.createElement('link');
                 alsSupplementalCSSTag.rel = 'stylesheet';
                 alsSupplementalCSSTag.type = 'text/css';
                 alsSupplementalCSSTag.media = 'all';
-                alsSupplementalCSSTag.href = alsLightbox.config.active.supplementalCSS;
+                alsSupplementalCSSTag.href = alsLightboxFancybox3.config.active.supplementalCSS;
                 document.getElementsByTagName('head')[0].appendChild(alsSupplementalCSSTag);
             }
 
@@ -325,7 +325,7 @@ var alsLightbox = function () {
                 if ($('body').hasClass('on-mobile-device') && !$('body').hasClass('on-mobile-device-triggered')) {
                     if (my_scroll() < -150) {
                         $("#als_lightbox").trigger('click');
-                        createCookieAls(alsLightbox.config.active.cookieName, 1, alsLightbox.config.active.cookieDuration);
+                        createCookieAls(alsLightboxFancybox3.config.active.cookieName, 1, alsLightboxFancybox3.config.active.cookieDuration);
                         $('body').removeClass('on-mobile-device');
                         $("body").addClass('on-mobile-device-triggered')
                     }
@@ -358,7 +358,7 @@ var alsLightbox = function () {
                 $('body').prepend('<div id="als_lightbox" style="display:none;"></div>');
                 // check if we are on mobile device and add class to body accordingly.
                 $(document).on('touchstart', function () {
-                    if (readCookieAls(alsLightbox.config.active.cookieName)) {
+                    if (readCookieAls(alsLightboxFancybox3.config.active.cookieName)) {
                         $("body").addClass('on-mobile-device-triggered'); // if cookie is set, add class to body to prevent lightbox from showing on mobile devices.
                     } else {
                         $("body").addClass('on-mobile-device'); // if cookie is not set, add class to body to show lightbox on mobile devices.
@@ -368,20 +368,21 @@ var alsLightbox = function () {
                 var todayDate = new Date();
 
                 //defaults
-                if (!alsLightbox.config.active.cookieName) {
-                    alsLightbox.config.active.cookieName = "als_lightbox";
+                console.log('alsLightboxFancybox3.config.active.cookieName', alsLightboxFancybox3.config.active.cookieName);
+                if (!alsLightboxFancybox3.config.active.cookieName) {
+                    alsLightboxFancybox3.config.active.cookieName = "als_lightbox";
                 }
-                if (!alsLightbox.config.active.cookieDuration) {
-                    alsLightbox.config.active.cookieDuration = 1;
+                if (!alsLightboxFancybox3.config.active.cookieDuration) {
+                    alsLightboxFancybox3.config.active.cookieDuration = 1;
                 }
-                if (!alsLightbox.config.active.startDate) {
-                    alsLightbox.config.active.startDate = "January 1, 1970 00:00:00";
+                if (!alsLightboxFancybox3.config.active.startDate) {
+                    alsLightboxFancybox3.config.active.startDate = "January 1, 1970 00:00:00";
                 }
-                if (!alsLightbox.config.active.endDate) {
-                    alsLightbox.config.active.endDate = "January 1, 2038 00:00:00";
+                if (!alsLightboxFancybox3.config.active.endDate) {
+                    alsLightboxFancybox3.config.active.endDate = "January 1, 2038 00:00:00";
                 }
-                if (!alsLightbox.config.active.exitIntent) {
-                    alsLightbox.config.active.exitIntent = false;
+                if (!alsLightboxFancybox3.config.active.exitIntent) {
+                    alsLightboxFancybox3.config.active.exitIntent = false;
                 }
 
                 $("#als_lightbox").fancybox3({
@@ -397,11 +398,11 @@ var alsLightbox = function () {
                     wrapCSS: 'als_fancybox3',
                     scrollOutside: true, //If true, the script will try to avoid horizontal scrolling for iframes and html content
                     scrolling: 'no',
-                    maxHeight: alsLightbox.config.active.maxHeight,
-                    maxWidth: alsLightbox.config.active.maxWidth,
+                    maxHeight: alsLightboxFancybox3.config.active.maxHeight,
+                    maxWidth: alsLightboxFancybox3.config.active.maxWidth,
                     height: '100%',
                     width: '100%',
-                    href: decorateLinksIfAnalytics(alsLightbox.config.active.iframeURL),
+                    href: decorateLinksIfAnalytics(alsLightboxFancybox3.config.active.iframeURL),
                     type: 'iframe',
                     helpers: {
                         overlay: {
@@ -421,54 +422,54 @@ var alsLightbox = function () {
 
 
                 if (
-                    (!readCookieAls(alsLightbox.config.active.cookieName) &&
-                        todayDate > new Date(alsLightbox.config.active.startDate) &&
-                        todayDate < new Date(alsLightbox.config.active.endDate)
+                    (!readCookieAls(alsLightboxFancybox3.config.active.cookieName) &&
+                        todayDate > new Date(alsLightboxFancybox3.config.active.startDate) &&
+                        todayDate < new Date(alsLightboxFancybox3.config.active.endDate)
                     ) || (
-                        alsLightbox.config.active.testMode >= 1 || // Legacy support for values of 1 and 0.
-                        alsLightbox.config.active.testMode === 'true' // Support for string "true" in script tag's data- attributes.
+                        alsLightboxFancybox3.config.active.testMode >= 1 || // Legacy support for values of 1 and 0.
+                        alsLightboxFancybox3.config.active.testMode === 'true' // Support for string "true" in script tag's data- attributes.
                     )) {
-                    // Exit intent functionality.				
-                    if (alsLightbox.config.active.exitIntent) {
+                    // Exit intent functionality.					
+                    if (alsLightboxFancybox3.config.active.exitIntent) {
                         $(document).on('scroll', myScrollSpeedFunction); // if on mobile, show lightbox when user scrolls up quickly
                         $(document).one("mouseleave", function () { // show lightbox the first time the mouse leaves the browser window
                             $("#als_lightbox").trigger('click');
-                            createCookieAls(alsLightbox.config.active.cookieName, 1, alsLightbox.config.active.cookieDuration);
+                            createCookieAls(alsLightboxFancybox3.config.active.cookieName, 1, alsLightboxFancybox3.config.active.cookieDuration);
                         });
                     } else {
                         $("#als_lightbox").trigger('click'); // show lightbox immediately
-                        createCookieAls(alsLightbox.config.active.cookieName, 1, alsLightbox.config.active.cookieDuration);
+                        createCookieAls(alsLightboxFancybox3.config.active.cookieName, 1, alsLightboxFancybox3.config.active.cookieDuration);
                     }
                 }
             });
         }
-    };    // End alsLightbox.launch
+    };    // End alsLightboxFancybox3.launch
 
     // If this script's HTML tag element has a configFile specified, use that value as the path to the config JSON.
     // Otherwise, use empty string.
-    alsLightbox.config.active.configFile = alsLightbox.thisScript.getAttribute('data-configFile') ?
-        alsLightbox.thisScript.getAttribute('data-configFile') : '';
+    alsLightboxFancybox3.config.active.configFile = alsLightboxFancybox3.thisScript.getAttribute('data-configFile') ?
+        alsLightboxFancybox3.thisScript.getAttribute('data-configFile') : '';
 
     // If there's a config file specified, go get the JSON. Then use it to set the active config and launch the lightbox.
     // Otherwise, just set the active config and launch the lightbox without external config JSON.
-    if (alsLightbox.config.active.configFile) {
+    if (alsLightboxFancybox3.config.active.configFile) {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', encodeURI(alsLightbox.config.active.configFile));
+        xhr.open('GET', encodeURI(alsLightboxFancybox3.config.active.configFile));
         xhr.onload = function () {
             if (xhr.status === 200) {
-                alsLightbox.config.external = JSON.parse(xhr.responseText);
-                alsLightbox.setActiveConfig();
-                alsLightbox.launch();
+                alsLightboxFancybox3.config.external = JSON.parse(xhr.responseText);
+                alsLightboxFancybox3.setActiveConfig();
+                alsLightboxFancybox3.launch();
             }
             else {
-                alsLightbox.setActiveConfig();
-                alsLightbox.launch();
+                alsLightboxFancybox3.setActiveConfig();
+                alsLightboxFancybox3.launch();
             }
         };
         xhr.send();
     } else {
-        alsLightbox.setActiveConfig();
-        alsLightbox.launch();
+        alsLightboxFancybox3.setActiveConfig();
+        alsLightboxFancybox3.launch();
     }
 
 };
@@ -478,12 +479,12 @@ var alsLightbox = function () {
 // This implementation should throw an error if Drupal.behaviors doesn't exist, but try/catch means the script
 // will just move on. Either way, we run the big master namespace function.
 try {
-    Drupal.behaviors.alsLightbox = {
+    Drupal.behaviors.alsLightboxFancybox3 = {
         attach: function () {
-            alsLightbox();
+            alsLightboxFancybox3();
         }
     };
 }
 catch (err) {
-    alsLightbox();
+    alsLightboxFancybox3();
 }
