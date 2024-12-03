@@ -10,7 +10,7 @@ Splash pages, simplified.
 
 2. Once you have php installed, go into `index.html` and `index_data.html` and switch the scripts that the files are using from the deployment script to the local development script. The only difference here is that we will not use the minified version of the `js` files, this will make development faster.
 
-3. We will also need to go into `js/als_lightbox.js` and `js/als_lightbox_v2.2.js` and switch the `alsLightbox.config.paths` to the object for local development. IMPORTANT! Do not deploy changes for this repo without changing this back! There are live lightboxes using this code, and we don't want to break them. 
+3. We will also need to go into `js/als_lightbox.js`, `js/als_lightbox_v2.2.js`, `js/als_lightbox_v2.3.js` and switch the `alsLightbox.config.paths` to the object for local development. IMPORTANT! Do not deploy changes for this repo without changing this back! There are live lightboxes using this code, and we don't want to break them. 
 
 4. Once all of this is done, you can run `php -S localhost:8080` to start a local php server. Navigate to `localhost:8080/index.html` to see the demo page and any changes you make will be reflected here after a refresh. 
 
@@ -80,6 +80,11 @@ Webmasters can set configurations in two ways:
 `data-exitIntent`       | Boolean. Activate the exitIntent lightbox by setting this to true, it will override the default lighthouse functionality and trigger a pop-up when we detect  that the user is leaving the website. 
 
 ## Release Notes
+
+### v2.3 - "SHP needs another fancybox version because of conflicts" - 2024-11-26
+- Create new reference of `fancybox` to `fancybox3` so the fancybox library does not interfere with the ones used on the SHP site.
+- Update the `alsLightboxFancybox3.thisScriptID` value to be unique to fancybox3, so that a lightbox and exit intent frame both fire.
+- So far, this is only to be deployed on the SHP site. We should test this rigorously before completely replacing it.
 
 ### v2.2 - "How to Dismantle An Atomic Bomb" - 2021-12-17
 - Change every reference of `fancybox` to `fancybox2` so the fancybox library does not interfere with the one used on the SHP site.
